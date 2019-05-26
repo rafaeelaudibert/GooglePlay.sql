@@ -4,6 +4,11 @@ This repository contain the code for INF01145 (Fundamentos de Bancos de Dados) d
 
 The assignment project definition can be found at [definition.pdf](./definition.pdf) (in Portuguese)
 
-## How to
+## Assignment
 
-The how-to's steps will be explained later on the development
+This assignment intends to try to recreate a possible database model used by [Google](https://google.com) on his website, and app for Androind, [Google Play](https://play.google.com).
+
+![google-play](./images/google-play.png)
+
+# Authors
+This assignment was developed by [Rafael B. Audibert](https://github.com/rafaeelaudibert) and [Ana Carolina Pagnoncelli](https://github.com/Ana2877), feel free to contact any of us if you are interested in this repository content
