@@ -110,11 +110,11 @@ INSERT INTO Language VALUES ('Coreano');
 
 ----
 -- Developer insertion 
-INSERT INTO Developer VALUES ('android@support.whatsapp.com', 'WhatsApp Inc.', '1601 Willow Road Menlo Park, CA 94025', '5b10cd9f1d9ef44211ecb194f06389afd953bed2c976d2dd173976f8e36982b9585bf13fdd65410c519bfb7830270ab79e51828af372eb123010895227e5465f');
-INSERT INTO Developer VALUES ('snapchat@snap.com', 'Snap Inc', '63 Market St. Venice CA, 90291', '935c67c454a22cef8454fc68115a794bf95298901bdc22e10e5b2e4e31d39b0ee6d7b1ad9869c2d10471032fecbb65e4f9a74d39d4f4a7c0b6c01da4ebaeb01a');
-INSERT INTO Developer VALUES ('info@fireproofgames.com', 'Fireproof Games', 'Hays House Millmead, Guildford GU2 4HJ, United Kingdom', '748a1be8c2334ab36e9dc442932af8760958c1a751afac702f314a759ce9b2fd7ba59b6e3ce8123bfcd98dc4f467169d72e22889917f3d574431f1ffc0e5a65e');
-INSERT INTO Developer VALUES ('davinci@bluebraingames.com', 'Blue Brain Games s.r.o', 'Sabinovska 8 821 02, Bratislava, Slovak Republic', 'f4353e2794dc6f879942560e9164507cc0dd8b512569d153c9aab358c7911b83f1ee92464e9f44c784d12d438cbd3edee562aeae3f8728b26c8ecad560b7ca01');
-INSERT INTO Developer VALUES ('gp-info@supercell.com', 'Supercell', 'Itamerenkatu 11-13, 00180, Helsinki, Finland', '183fa867da7738c03774f2eef5cd75b80d863c5537115ba0c56ee82616fe8d908f5d8a051ce8d5d5b9f4f85d9f1a0fabeeaa0d1cca8585104ced1dbce3c95f87');
+INSERT INTO Developer VALUES ('android@support.whatsapp.com', 'WhatsApp Inc.', '1601 Willow Road Menlo Park, CA 94025', '513ddfc7dfaee9352b3d4be6bf25d4f09c9fed36c3ff5b5dcaf4f022658fa0f34e03f5b8b12b29e058587571eae74072705c900ce24a50afe0790db08353f5d6');
+INSERT INTO Developer VALUES ('snapchat@snap.com', 'Snap Inc', '63 Market St. Venice CA, 90291', '2fc09ba0e915e41a19a22e479714ea653a867b35c1b61dfcabbc3a1a3e401cd8252fa77daed87a97e08b0170370fadf049e6b19fda03315b412ec6eaf529f769');
+INSERT INTO Developer VALUES ('info@fireproofgames.com', 'Fireproof Games', 'Hays House Millmead, Guildford GU2 4HJ, United Kingdom', '1c4c6176fe05d94bc9f21d835e286228f533f1387832a69863f3dfb0feef209ea4c703996a26c7a604af22ba3d55bf2c9961a66de99d286cc5392ded06b501f7');
+INSERT INTO Developer VALUES ('davinci@bluebraingames.com', 'Blue Brain Games s.r.o', 'Sabinovska 8 821 02, Bratislava, Slovak Republic', '9a8303a7da396a114932c119f896daa2d6446faef48142e13f77ff0533ba571fc44b161a1ad1eec166daed5e816e8eed2a0f4f7d47b1342c0e05cfdded45de60');
+INSERT INTO Developer VALUES ('gp-info@supercell.com', 'Supercell', 'Itamerenkatu 11-13, 00180, Helsinki, Finland', 'ed9394b00015aeb5830b28a1266c679f948d6c1f895bd8992387b265a676e422833493760471c19496063d5cec776393da400b20dfed6e77c4299620d0d73be3');
 -- SELECT * from Developer; 	-- Helper to display all Developer instances
 -- DELETE FROM Developer; 	-- Helper to delete all Developer instances
 
