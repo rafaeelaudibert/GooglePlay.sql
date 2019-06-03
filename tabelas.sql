@@ -16,7 +16,8 @@ CREATE TABLE Item (
     price NUMERIC(5,2),
     is_promotion BOOLEAN NOT NULL,
     promotion_price NUMERIC(5,2),
-    about VARCHAR(1000) NOT NULL
+    about VARCHAR(1000) NOT NULL,
+    type CHAR(5) NOT NULL
 );
 
 CREATE TABLE Attachment (

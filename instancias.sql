@@ -1,31 +1,31 @@
 ﻿-- Item insertion (we generate the UUID manually to properly insert the foreign_keys later) 
 -- Items which will be Apps
-INSERT INTO Item VALUES ('786f5057-d2b3-4785-8b12-28f8db97c4a1', 'WhatsApp Messenger', to_date('18-10-2010', 'DD-MM-YYYY'), NULL, false, NULL, 'Simples. Pessoal. Instantaneo.');
-INSERT INTO Item VALUES ('17c7b274-ef54-4214-8458-dd474abdb46c', 'Snapchat', to_date('29-10-2012', 'DD-MM-YYYY'), NULL, false, NULL, 'Filtros e lentes para fotos e stories criativos.');
-INSERT INTO Item VALUES ('ebc0098e-938d-4d46-b514-a98a38d62b94', 'The Room', to_date('05-04-2013', 'DD-MM-YYYY'), 3.99, false, NULL, 'A melhor experiência com quebra-cabeças.');
-INSERT INTO Item VALUES ('cb6fb9a2-7c60-4187-a714-77dc79603171', 'The House of Da Vinci', to_date('25-08-2017', 'DD-MM-YYYY'), 16.99, true, 11.00, 'Entre em The House of Da Vinci, um novo e imperdível jogo de aventura com quebra-cabeças 3D.');
-INSERT INTO Item VALUES ('4911d529-039d-45f8-aa67-d9445529ab33', 'Brawl Stars', to_date('25-04-2018', 'DD-MM-YYYY'), NULL, false, NULL, 'Batalhas agitadas multijogador dos mesmos criadores de Clash of Clans, Clash Royale e Boom Beach!');
+INSERT INTO Item VALUES ('786f5057-d2b3-4785-8b12-28f8db97c4a1', 'WhatsApp Messenger', to_date('18-10-2010', 'DD-MM-YYYY'), NULL, false, NULL, 'Simples. Pessoal. Instantaneo.', 'app');
+INSERT INTO Item VALUES ('17c7b274-ef54-4214-8458-dd474abdb46c', 'Snapchat', to_date('29-10-2012', 'DD-MM-YYYY'), NULL, false, NULL, 'Filtros e lentes para fotos e stories criativos.', 'app');
+INSERT INTO Item VALUES ('ebc0098e-938d-4d46-b514-a98a38d62b94', 'The Room', to_date('05-04-2013', 'DD-MM-YYYY'), 3.99, false, NULL, 'A melhor experiência com quebra-cabeças.', 'app');
+INSERT INTO Item VALUES ('cb6fb9a2-7c60-4187-a714-77dc79603171', 'The House of Da Vinci', to_date('25-08-2017', 'DD-MM-YYYY'), 16.99, true, 11.00, 'Entre em The House of Da Vinci, um novo e imperdível jogo de aventura com quebra-cabeças 3D.', 'app');
+INSERT INTO Item VALUES ('4911d529-039d-45f8-aa67-d9445529ab33', 'Brawl Stars', to_date('25-04-2018', 'DD-MM-YYYY'), NULL, false, NULL, 'Batalhas agitadas multijogador dos mesmos criadores de Clash of Clans, Clash Royale e Boom Beach!', 'app');
 
 -- Items which will be Movies
-INSERT INTO Item VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'A morte te dá parabéns 2', to_date('02-2019', 'MM-YYYY'), 42.90, false, 32.90, 'Acontece tudo de novo com Tree Gelbman, a sarcástica universitária que solucionou seu próprio assassinato, revivendo sua morte repetidamente.');
-INSERT INTO Item VALUES ('510d33f9-248f-412d-b09b-02b18e9750f5', 'A Mula', to_date('12-2018', 'MM-YYYY'), 60.90, false, NULL, 'Eastwood interpreta Earl Stone, um senhor de 80 anos que está falido, sozinho e enfrentando o fechamento de seu negócio quando recebe uma oferta de emprego cuja única responsabilidade é dirigir.');
-INSERT INTO Item VALUES ('06e68225-fbb3-47c5-9f76-48b818870c69', 'Como treinar o seu dragão 3', to_date('01-2019', 'MM-YYYY'), 42.90, false, NULL, 'Da DreamWorks Animation chega este surpreendente conto sobre amadurecer, encontrar coragem para enfrentar o desconhecido... e saber que nada nunca nos prepara para as perdas.');
-INSERT INTO Item VALUES ('aa268ae6-b8c8-49cc-aa90-f59a07822e0e', 'Aquaman', to_date('12-2018', 'MM-YYYY'), 39.90, false, NULL, 'Uma aventura cheia de ação que apresenta o vasto e extraordinário mundo subaquático dos sete mares, "Aquaman" conta a história da origem do meio-homem e meio-atlante Arthur Curry, e o leva na jornada da sua vida, que não apenas o forçará a encarar quem realmente é, mas também descobrir se é digno do que nasceu para ser: um rei.');
-INSERT INTO Item VALUES ('7d348c82-5226-49bb-8dda-8383c2d6a279', 'Vingadores: Guerra Infinita', to_date('04-2018', 'MM-YYYY'), 36.90, false, NULL, 'Thanos enfim chega à Terra, disposto a reunir as Joias do Infinito.');
+INSERT INTO Item VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'A morte te dá parabéns 2', to_date('02-2019', 'MM-YYYY'), 42.90, false, 32.90, 'Acontece tudo de novo com Tree Gelbman, a sarcástica universitária que solucionou seu próprio assassinato, revivendo sua morte repetidamente.', 'movie');
+INSERT INTO Item VALUES ('510d33f9-248f-412d-b09b-02b18e9750f5', 'A Mula', to_date('12-2018', 'MM-YYYY'), 60.90, false, NULL, 'Eastwood interpreta Earl Stone, um senhor de 80 anos que está falido, sozinho e enfrentando o fechamento de seu negócio quando recebe uma oferta de emprego cuja única responsabilidade é dirigir.', 'movie');
+INSERT INTO Item VALUES ('06e68225-fbb3-47c5-9f76-48b818870c69', 'Como treinar o seu dragão 3', to_date('01-2019', 'MM-YYYY'), 42.90, false, NULL, 'Da DreamWorks Animation chega este surpreendente conto sobre amadurecer, encontrar coragem para enfrentar o desconhecido... e saber que nada nunca nos prepara para as perdas.', 'movie');
+INSERT INTO Item VALUES ('aa268ae6-b8c8-49cc-aa90-f59a07822e0e', 'Aquaman', to_date('12-2018', 'MM-YYYY'), 39.90, false, NULL, 'Uma aventura cheia de ação que apresenta o vasto e extraordinário mundo subaquático dos sete mares, "Aquaman" conta a história da origem do meio-homem e meio-atlante Arthur Curry, e o leva na jornada da sua vida, que não apenas o forçará a encarar quem realmente é, mas também descobrir se é digno do que nasceu para ser: um rei.', 'movie');
+INSERT INTO Item VALUES ('7d348c82-5226-49bb-8dda-8383c2d6a279', 'Vingadores: Guerra Infinita', to_date('04-2018', 'MM-YYYY'), 36.90, false, NULL, 'Thanos enfim chega à Terra, disposto a reunir as Joias do Infinito.', 'movie');
 
 -- Items which will be Books
-INSERT INTO Item VALUES ('cf323144-045e-42e1-acfb-97663575c32f', 'A Arte da Guerra de Sun Tzu', to_date('2009', 'YYYY'), 1.99, false, NULL, 'A Arte da Guerra foi escrito pelo grande general chinês Sun Tzu a mais de 2.500 anos.');
-INSERT INTO Item VALUES ('ebff8ca1-8d1b-4946-bac4-b2193a6143d1', 'A Barraca do Beijo', to_date('12-06-2018', 'DD-MM-YYYY'), 17.45, true, 2.62, 'ELLE EVANS é o que toda garota quer ser: bonita e popular. Mas ela nunca foi beijada.');
-INSERT INTO Item VALUES ('9b9cf827-8ae3-4d16-98d5-406d416815ac', 'O poder do Hábito', to_date('01-10-2012', 'DD-MM-YYYY'), 29.90, true, 14.95, 'Charles Duhigg, repórter investigativo do New York Times, mostra que a chave para o sucesso é entender como os hábitos funcionam - e como podemos transformá-los.');
-INSERT INTO Item VALUES ('0c4ddaad-bece-4178-9223-4bd64de7bbbb', 'Insurgente', to_date('01-04-2013', 'DD-MM-YYYY'), 25.50, false, 24.22, 'Uma escolha pode te destruir Na Chicago futurista criada por Veronica Roth em Divergente, as facções estão desmoronando.'						);
-INSERT INTO Item VALUES ('b93ae5d4-4d70-45d1-8368-ab40ac42cf67', 'A pŕoxima porta', to_date('13-09-2018', 'DD-MM-YYYY'), 0.99, false, NULL, 'Chloe sente que a vida está finalmente perfeita quando volta para sua cidade natal, em uma nova casa, com seu noivo. Sua carreira no FBI parece promissora, e seu casamento está por vir.');
+INSERT INTO Item VALUES ('cf323144-045e-42e1-acfb-97663575c32f', 'A Arte da Guerra de Sun Tzu', to_date('2009', 'YYYY'), 1.99, false, NULL, 'A Arte da Guerra foi escrito pelo grande general chinês Sun Tzu a mais de 2.500 anos.', 'book');
+INSERT INTO Item VALUES ('ebff8ca1-8d1b-4946-bac4-b2193a6143d1', 'A Barraca do Beijo', to_date('12-06-2018', 'DD-MM-YYYY'), 17.45, true, 2.62, 'ELLE EVANS é o que toda garota quer ser: bonita e popular. Mas ela nunca foi beijada.', 'book');
+INSERT INTO Item VALUES ('9b9cf827-8ae3-4d16-98d5-406d416815ac', 'O poder do Hábito', to_date('01-10-2012', 'DD-MM-YYYY'), 29.90, true, 14.95, 'Charles Duhigg, repórter investigativo do New York Times, mostra que a chave para o sucesso é entender como os hábitos funcionam - e como podemos transformá-los.', 'book');
+INSERT INTO Item VALUES ('0c4ddaad-bece-4178-9223-4bd64de7bbbb', 'Insurgente', to_date('01-04-2013', 'DD-MM-YYYY'), 25.50, false, 24.22, 'Uma escolha pode te destruir Na Chicago futurista criada por Veronica Roth em Divergente, as facções estão desmoronando.', 'book');
+INSERT INTO Item VALUES ('b93ae5d4-4d70-45d1-8368-ab40ac42cf67', 'A pŕoxima porta', to_date('13-09-2018', 'DD-MM-YYYY'), 0.99, false, NULL, 'Chloe sente que a vida está finalmente perfeita quando volta para sua cidade natal, em uma nova casa, com seu noivo. Sua carreira no FBI parece promissora, e seu casamento está por vir.', 'book');
 
 -- Items which will be Albums
-INSERT INTO Item VALUES ('3619aea0-6ff7-44f9-a346-e10666b36169', 'Trench', to_date('10-2018', 'MM-YYYY'), 42.99, false, NULL, 'Quinto álbum do duo norte-americano Twenty One Pilots.');
-INSERT INTO Item VALUES ('80abca97-5772-4ff8-bb9d-31549907a225', 'Delta', to_date('16-09-2018', 'DD-MM-YYYY'), 23.90, false, NULL, '');
-INSERT INTO Item VALUES ('fc38ed4f-4ca7-4681-8406-1869968117a2', 'Cleopatra', to_date('16-10-2016', 'DD-MM-YYYY'), 21.90, false, NULL, 'Aguardado álbum do The Lumineers, em que as músicas contam uma linda história.');
-INSERT INTO Item VALUES ('19ac9daa-c187-49f5-a741-ca23d42b21ee', '?', to_date('16-03-2018', 'DD-MM-YYYY'), 21.99, false, NULL, 'Último álbum de XXXTENTACION :(');
-INSERT INTO Item VALUES ('8fcda5a6-e6fe-47c5-9e86-2c731188df7f', 'My Head is an Animal', to_date('20-09-2011', 'DD-MM-YYYY'), 21.99, true, 13.99, '');
+INSERT INTO Item VALUES ('3619aea0-6ff7-44f9-a346-e10666b36169', 'Trench', to_date('10-2018', 'MM-YYYY'), 42.99, false, NULL, 'Quinto álbum do duo norte-americano Twenty One Pilots.', 'album');
+INSERT INTO Item VALUES ('80abca97-5772-4ff8-bb9d-31549907a225', 'Delta', to_date('16-09-2018', 'DD-MM-YYYY'), 23.90, false, NULL, '', 'album');
+INSERT INTO Item VALUES ('fc38ed4f-4ca7-4681-8406-1869968117a2', 'Cleopatra', to_date('16-10-2016', 'DD-MM-YYYY'), 21.90, false, NULL, 'Aguardado álbum do The Lumineers, em que as músicas contam uma linda história.', 'album');
+INSERT INTO Item VALUES ('19ac9daa-c187-49f5-a741-ca23d42b21ee', '?', to_date('16-03-2018', 'DD-MM-YYYY'), 21.99, false, NULL, 'Último álbum de XXXTENTACION :(', 'album');
+INSERT INTO Item VALUES ('8fcda5a6-e6fe-47c5-9e86-2c731188df7f', 'My Head is an Animal', to_date('20-09-2011', 'DD-MM-YYYY'), 21.99, true, 13.99, '', 'album');
 
 -- SELECT * from Item; 	-- Helper to display all Item instances
 -- DELETE FROM Item; 	-- Helper to delete all Item instances
