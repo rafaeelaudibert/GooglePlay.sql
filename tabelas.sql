@@ -123,8 +123,7 @@ CREATE TABLE Author (
 );
 
 CREATE TABLE "Cast" (
-    name VARCHAR(80) PRIMARY KEY UNIQUE NOT NULL,
-    function CHAR(8) NOT NULL
+    name VARCHAR(80) PRIMARY KEY UNIQUE NOT NULL
 );
 
 CREATE TABLE Category (
@@ -228,7 +227,8 @@ CREATE TABLE Movie_Language (
 
 CREATE TABLE Movie_Cast (
     movie_id UUID NOT NULL,
-    cast_name VARCHAR(80) NOT NULL,
+    cast_name VARCHAR(80) NOT NULL,    
+    function CHAR(8) NOT NULL,
     UNIQUE (movie_id, cast_name),
     PRIMARY KEY (movie_id, cast_name),
     FOREIGN KEY (movie_id) REFERENCES Movie (item_id)

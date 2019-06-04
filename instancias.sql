@@ -140,17 +140,17 @@ INSERT INTO Author VALUES ('Blake Pierce');
 
 ----
 -- "Cast" insertion 
-INSERT INTO "Cast" VALUES ('Jessica Rothe', 'ator');
-INSERT INTO "Cast" VALUES ('Steve Zissis', 'ator');
-INSERT INTO "Cast" VALUES ('Cristopher Landon', 'diretor');
-INSERT INTO "Cast" VALUES ('Scott Lodbel', 'escritor');
-INSERT INTO "Cast" VALUES ('Alison Eastwood', 'ator');
-INSERT INTO "Cast" VALUES ('Nick Schenk', 'produtor');
-INSERT INTO "Cast" VALUES ('America Ferrera', 'ator');
-INSERT INTO "Cast" VALUES ('Dean DeBlois', 'escritor');
-INSERT INTO "Cast" VALUES ('Jason Momoa', 'ator');
-INSERT INTO "Cast" VALUES ('Will Beal', 'produtor');
-INSERT INTO "Cast" VALUES ('Joe Russo', 'diretor');
+INSERT INTO "Cast" VALUES ('Jessica Rothe');
+INSERT INTO "Cast" VALUES ('Steve Zissis');
+INSERT INTO "Cast" VALUES ('Cristopher Landon');
+INSERT INTO "Cast" VALUES ('Scott Lodbel');
+INSERT INTO "Cast" VALUES ('Alison Eastwood');
+INSERT INTO "Cast" VALUES ('Nick Schenk');
+INSERT INTO "Cast" VALUES ('America Ferrera');
+INSERT INTO "Cast" VALUES ('Dean DeBlois');
+INSERT INTO "Cast" VALUES ('Jason Momoa');
+INSERT INTO "Cast" VALUES ('Will Beal');
+INSERT INTO "Cast" VALUES ('Joe Russo');
 -- SELECT * from "Cast"; 	-- Helper to display all "Cast" instances
 -- DELETE FROM "Cast";		-- Helper to delete all "Cast" instances
 
@@ -301,17 +301,18 @@ INSERT INTO Movie_Language VALUES ('7d348c82-5226-49bb-8dda-8383c2d6a279', 'Core
 
 ----
 -- Movie_Cast insertion
-INSERT INTO Movie_Cast VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'Jessica Rothe');
-INSERT INTO Movie_Cast VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'Steve Zissis');
-INSERT INTO Movie_Cast VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'Cristopher Landon');
-INSERT INTO Movie_Cast VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'Scott Lodbel');
-INSERT INTO Movie_Cast VALUES ('510d33f9-248f-412d-b09b-02b18e9750f5', 'Alison Eastwood');
-INSERT INTO Movie_Cast VALUES ('510d33f9-248f-412d-b09b-02b18e9750f5', 'Nick Schenk');
-INSERT INTO Movie_Cast VALUES ('06e68225-fbb3-47c5-9f76-48b818870c69', 'America Ferrera');
-INSERT INTO Movie_Cast VALUES ('06e68225-fbb3-47c5-9f76-48b818870c69', 'Dean DeBlois');
-INSERT INTO Movie_Cast VALUES ('aa268ae6-b8c8-49cc-aa90-f59a07822e0e', 'Jason Momoa');
-INSERT INTO Movie_Cast VALUES ('aa268ae6-b8c8-49cc-aa90-f59a07822e0e', 'Will Beal');
-INSERT INTO Movie_Cast VALUES ('7d348c82-5226-49bb-8dda-8383c2d6a279', 'Jason Momoa');
-INSERT INTO Movie_Cast VALUES ('7d348c82-5226-49bb-8dda-8383c2d6a279', 'Joe Russo');
+INSERT INTO Movie_Cast VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'Jessica Rothe', 'ator');
+INSERT INTO Movie_Cast VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'Steve Zissis', 'ator');
+INSERT INTO Movie_Cast VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'Cristopher Landon', 'diretor');
+INSERT INTO Movie_Cast VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'Will Beal', 'diretor');
+INSERT INTO Movie_Cast VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'Scott Lodbel', 'escritor');
+INSERT INTO Movie_Cast VALUES ('510d33f9-248f-412d-b09b-02b18e9750f5', 'Alison Eastwood', 'ator');
+INSERT INTO Movie_Cast VALUES ('510d33f9-248f-412d-b09b-02b18e9750f5', 'Nick Schenk', 'produtor');
+INSERT INTO Movie_Cast VALUES ('06e68225-fbb3-47c5-9f76-48b818870c69', 'America Ferrera', 'ator');
+INSERT INTO Movie_Cast VALUES ('06e68225-fbb3-47c5-9f76-48b818870c69', 'Dean DeBlois', 'escritor');
+INSERT INTO Movie_Cast VALUES ('aa268ae6-b8c8-49cc-aa90-f59a07822e0e', 'Jason Momoa', 'ator');
+INSERT INTO Movie_Cast VALUES ('aa268ae6-b8c8-49cc-aa90-f59a07822e0e', 'Will Beal', 'produtor');
+INSERT INTO Movie_Cast VALUES ('7d348c82-5226-49bb-8dda-8383c2d6a279', 'Jason Momoa', 'ator');
+INSERT INTO Movie_Cast VALUES ('7d348c82-5226-49bb-8dda-8383c2d6a279', 'Joe Russo', 'diretor');
 -- SELECT * from Movie_Cast; 	-- Helper to display all Movie_Cast instances
 -- DELETE FROM Movie_Cast;	-- Helper to delete all Movie_Cast instances
