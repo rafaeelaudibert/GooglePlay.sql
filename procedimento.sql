@@ -10,7 +10,7 @@ END
 $func$ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_categorization
-BEFORE INSERT ON categorization
+BEFORE INSERT OR UPDATE ON categorization
 FOR EACH ROW EXECUTE PROCEDURE trg_insert_categorization();
 
 -- Example for testing the trigger
