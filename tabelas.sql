@@ -149,11 +149,11 @@ CREATE TABLE Categorization (
 
 -- App specification
 CREATE TABLE App (
-    item_id UUID PRIMARY KEY UNIQUE NOT NULL,
+    id UUID PRIMARY KEY UNIQUE NOT NULL,
     developer_email VARCHAR(50) NOT NULL,
     size BIGINT NOT NULL,
     version VARCHAR NOT NULL,
-    FOREIGN KEY (item_id) REFERENCES Item (id)
+    FOREIGN KEY (id) REFERENCES Item (id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (developer_email) REFERENCES Developer (email)
@@ -163,9 +163,9 @@ CREATE TABLE App (
 
 -- Album and dependents specification
 CREATE TABLE Album (
-    item_id UUID PRIMARY KEY UNIQUE NOT NULL,
+    id UUID PRIMARY KEY UNIQUE NOT NULL,
     artist_name VARCHAR(80) NOT NULL,
-    FOREIGN KEY (item_id) REFERENCES Item (id)
+    FOREIGN KEY (id) REFERENCES Item (id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (artist_name) REFERENCES Artist (name)
@@ -179,19 +179,19 @@ CREATE TABLE Track (
     duration INT NOT NULL,
     UNIQUE (name, album_id),
     PRIMARY KEY (name, album_id),
-    FOREIGN KEY (album_id) REFERENCES Album (item_id)
+    FOREIGN KEY (album_id) REFERENCES Album (id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
 
 -- Book and dependents specification
 CREATE TABLE Book (
-    item_id UUID PRIMARY KEY UNIQUE NOT NULL,
+    id UUID PRIMARY KEY UNIQUE NOT NULL,
     author_name VARCHAR(80) NOT NULL,
     language_name VARCHAR(20) NOT NULL,
     ISBN CHAR(13) NOT NULL,
     number_of_pages SMALLINT NOT NULL,
-    FOREIGN KEY (item_id) REFERENCES Item (id)
+    FOREIGN KEY (id) REFERENCES Item (id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (author_name) REFERENCES Author (name)
@@ -204,9 +204,9 @@ CREATE TABLE Book (
  
 -- Movie and dependents specification
 CREATE TABLE Movie (
-    item_id UUID PRIMARY KEY UNIQUE NOT NULL,
+    id UUID PRIMARY KEY UNIQUE NOT NULL,
     duration INT NOT NULL,
-    FOREIGN KEY (item_id) REFERENCES Item(id)
+    FOREIGN KEY (id) REFERENCES Item(id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -220,7 +220,7 @@ CREATE TABLE Movie_Language (
     FOREIGN KEY (language_name) REFERENCES Language (name)
         ON DELETE RESTRICT
         ON UPDATE RESTRICT,
-    FOREIGN KEY (movie_id) REFERENCES Movie (item_id)
+    FOREIGN KEY (movie_id) REFERENCES Movie (id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -231,7 +231,7 @@ CREATE TABLE Movie_Cast (
     function CHAR(8) NOT NULL,
     UNIQUE (movie_id, cast_name),
     PRIMARY KEY (movie_id, cast_name),
-    FOREIGN KEY (movie_id) REFERENCES Movie (item_id)
+    FOREIGN KEY (movie_id) REFERENCES Movie (id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (cast_name) REFERENCES "Cast" (name)

@@ -7,8 +7,8 @@ INSERT INTO Item VALUES ('cb6fb9a2-7c60-4187-a714-77dc79603171', 'The House of D
 INSERT INTO Item VALUES ('4911d529-039d-45f8-aa67-d9445529ab33', 'Brawl Stars', to_date('25-04-2018', 'DD-MM-YYYY'), NULL, false, NULL, 'Batalhas agitadas multijogador dos mesmos criadores de Clash of Clans, Clash Royale e Boom Beach!', 'app');
 
 -- Items which will be Movies
-INSERT INTO Item VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'A morte te dá parabéns 2', to_date('02-2019', 'MM-YYYY'), 42.90, false, 32.90, 'Acontece tudo de novo com Tree Gelbman, a sarcástica universitária que solucionou seu próprio assassinato, revivendo sua morte repetidamente.', 'movie');
-INSERT INTO Item VALUES ('510d33f9-248f-412d-b09b-02b18e9750f5', 'A Mula', to_date('12-2018', 'MM-YYYY'), 60.90, false, NULL, 'Eastwood interpreta Earl Stone, um senhor de 80 anos que está falido, sozinho e enfrentando o fechamento de seu negócio quando recebe uma oferta de emprego cuja única responsabilidade é dirigir.', 'movie');
+INSERT INTO Item VALUES ('dadee630-21f3-4feb-a30b-9156b6ddf5f2', 'A morte te dá parabéns 2', to_date('02-2019', 'MM-YYYY'), 42.90, true, 32.90, 'Acontece tudo de novo com Tree Gelbman, a sarcástica universitária que solucionou seu próprio assassinato, revivendo sua morte repetidamente.', 'movie');
+INSERT INTO Item VALUES ('510d33f9-248f-412d-b09b-02b18e9750f5', 'A Mula', to_date('12-2018', 'MM-YYYY'), 60.90, false, 25.90, 'Eastwood interpreta Earl Stone, um senhor de 80 anos que está falido, sozinho e enfrentando o fechamento de seu negócio quando recebe uma oferta de emprego cuja única responsabilidade é dirigir.', 'movie');
 INSERT INTO Item VALUES ('06e68225-fbb3-47c5-9f76-48b818870c69', 'Como treinar o seu dragão 3', to_date('01-2019', 'MM-YYYY'), 42.90, false, NULL, 'Da DreamWorks Animation chega este surpreendente conto sobre amadurecer, encontrar coragem para enfrentar o desconhecido... e saber que nada nunca nos prepara para as perdas.', 'movie');
 INSERT INTO Item VALUES ('aa268ae6-b8c8-49cc-aa90-f59a07822e0e', 'Aquaman', to_date('12-2018', 'MM-YYYY'), 39.90, false, NULL, 'Uma aventura cheia de ação que apresenta o vasto e extraordinário mundo subaquático dos sete mares, "Aquaman" conta a história da origem do meio-homem e meio-atlante Arthur Curry, e o leva na jornada da sua vida, que não apenas o forçará a encarar quem realmente é, mas também descobrir se é digno do que nasceu para ser: um rei.', 'movie');
 INSERT INTO Item VALUES ('7d348c82-5226-49bb-8dda-8383c2d6a279', 'Vingadores: Guerra Infinita', to_date('04-2018', 'MM-YYYY'), 36.90, false, NULL, 'Thanos enfim chega à Terra, disposto a reunir as Joias do Infinito.', 'movie');
@@ -68,6 +68,9 @@ INSERT INTO WishList VALUES ('rbaudibert@inf.ufrgs.br', '17c7b274-ef54-4214-8458
 INSERT INTO WishList VALUES ('rbaudibert@inf.ufrgs.br', 'cb6fb9a2-7c60-4187-a714-77dc79603171', to_date('30-05-2019', 'DD-MM-YYYY'));
 INSERT INTO WishList VALUES ('acpagnoncelli@inf.ufrgs.br', '786f5057-d2b3-4785-8b12-28f8db97c4a1', to_date('31-05-2019', 'DD-MM-YYYY'));
 INSERT INTO WishList VALUES ('acpagnoncelli@inf.ufrgs.br', '3619aea0-6ff7-44f9-a346-e10666b36169', to_date('31-05-2019', 'DD-MM-YYYY'));
+INSERT INTO WishList VALUES ('prnfreire@inf.ufrgs.br', 'cf323144-045e-42e1-acfb-97663575c32f', to_date('29-06-2019', 'DD-MM-YYYY'));
+INSERT INTO WishList VALUES ('rbaudibert@inf.ufrgs.br', 'cf323144-045e-42e1-acfb-97663575c32f', to_date('22-06-2019', 'DD-MM-YYYY'));
+INSERT INTO WishList VALUES ('olpcarvalho@inf.ufrgs.br', 'ebff8ca1-8d1b-4946-bac4-b2193a6143d1', to_date('12-12-2018', 'DD-MM-YYYY'));
 -- SELECT * from WishList; 	-- Helper to display all WishList instances
 -- DELETE FROM WishList;	-- Helper to delete all WishList instances
 
@@ -88,8 +91,14 @@ INSERT INTO Download VALUES ('rbaudibert@inf.ufrgs.br', 'cb6fb9a2-7c60-4187-a714
 INSERT INTO Download VALUES ('acpagnoncelli@inf.ufrgs.br', 'cb6fb9a2-7c60-4187-a714-77dc79603171', '3333444455556666', to_date('15-06-2018', 'DD-MM-YYYY'), to_date('15-06-2018', 'DD-MM-YYYY'), false);
 INSERT INTO Download VALUES ('acpagnoncelli@inf.ufrgs.br', '786f5057-d2b3-4785-8b12-28f8db97c4a1', '3333444455556666', to_date('17-10-2018', 'DD-MM-YYYY'), to_date('22-12-2018', 'DD-MM-YYYY'), false);
 INSERT INTO Download VALUES ('kbecker@inf.ufrgs.br', '3619aea0-6ff7-44f9-a346-e10666b36169', '4444555566667777', to_date('22-05-2019', 'DD-MM-YYYY'), to_date('22-05-2019', 'DD-MM-YYYY'), true);
+INSERT INTO Download VALUES ('rbaudibert@inf.ufrgs.br', 'fc38ed4f-4ca7-4681-8406-1869968117a2', '1111222233334444', to_date('22-12-2018', 'DD-MM-YYYY'), to_date('22-03-2019', 'DD-MM-YYYY'), false);
+INSERT INTO Download VALUES ('kbecker@inf.ufrgs.br', 'ebff8ca1-8d1b-4946-bac4-b2193a6143d1', '4444555566667777', to_date('22-05-2019', 'DD-MM-YYYY'), to_date('22-05-2019', 'DD-MM-YYYY'), true);
+INSERT INTO Download VALUES ('kbecker@inf.ufrgs.br', 'cf323144-045e-42e1-acfb-97663575c32f', '4444555566667777', to_date('11-04-2019', 'DD-MM-YYYY'), to_date('22-05-2019', 'DD-MM-YYYY'), true);
+INSERT INTO Download VALUES ('acpagnoncelli@inf.ufrgs.br', '7d348c82-5226-49bb-8dda-8383c2d6a279', '3333444455556666', to_date('22-05-2019', 'DD-MM-YYYY'), to_date('22-05-2019', 'DD-MM-YYYY'), false);
+INSERT INTO Download VALUES ('rbaudibert@inf.ufrgs.br', 'aa268ae6-b8c8-49cc-aa90-f59a07822e0e', '2222333344445555', to_date('21-05-2019', 'DD-MM-YYYY'), to_date('22-05-2019', 'DD-MM-YYYY'), true);
 -- SELECT * from Download; 	-- Helper to display all Download instances
 -- DELETE FROM Download;	-- Helper to delete all Download instances
+
 
 ----
 -- Language insertion 
