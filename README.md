@@ -12,5 +12,16 @@ This assignment intends to try to recreate a possible database model used by [Go
 
 ![google-play](./images/google-play.png)
 
-# Authors
+## Front end
+
+The front-end code was build using Flask. To run it, you should configure your database first (steps to configure it, will be added later).
+
+After, you need to install some dependencies:
+```bash
+$ pip3 install flask python-dotenv
+```
+
+After, in the `./src` folder you can run `flask run`, and a local server will be started at `localhost:5000`
+ 
+## Authors
 This assignment was developed by [Rafael B. Audibert](https://github.com/rafaeelaudibert) and [Ana Carolina Pagnoncelli](https://github.com/Ana2877), feel free to contact any of us if you are interested in this repository content
