@@ -31,7 +31,7 @@ O universo de discurso é baseado no site/aplicativo Google Play\cite{GooglePlay
 
 O universo é composto por:
 \begin{itemize}
-    \item \textbf{Usuário:} Definido por nome, senha, cpf, data de nascimento e email (único). O usuário é responsável pela maior parte das ações no aplicativo, sendo elas:
+    \item \textbf{Usuário:} Deve possuir nome, senha, cpf, data de nascimento e email (único). O usuário é responsável pela maior parte das ações no aplicativo, sendo elas:
     \begin{itemize}
         \item Comprar Itens (livros, álbuns de música, aplicativos e filmes): Pode comprar quantos e quaisquer itens que quiser, porém apenas uma vez cada um deles. As compras só podem ser feitas por cartão e aceitas se o usuário tiver um cartão cadastrado e pagar o preço referente ao item. Os itens gratuitos são classificados como compras também, porém não necessitam que o usuário tenha cartões cadastrados.\\
         Depois de comprado o item, o download do mesmo é feito, e a informação de que o download foi feito é salva. Fazendo com
@@ -42,30 +42,30 @@ O universo é composto por:
         \item Revisão de Itens: Usuários podem dar sua opinião sobre itens, tanto os que já foram usados na plataforma, quanto vistos em outros lugares. Cabe ao bom senso do usuário comentar apenas em itens que já usou. \\
         Cada usuário só pode fazer uma revisão por item, mas pode revisar quantos itens quiser. Uma revisão é composta por uma nota (de 0 a 5), uma data e opcionalmente um breve comentário.
         \\
-        \item Adicionar cartões: Cartões são usados para realizar compras. O usuário pode adicionar quantos desejar, desde que estejam no seu próprio nome. Porém não pode adicionar novamente o mesmo cartão.
+        \item Adicionar cartões: Cartões são usados para realizar compras. O usuário pode adicionar quantos desejar. O cartão não necessariamente precisa estar em seu nome, portanto é necessário que guardemos o nome impresso no cartão. Porém não pode adicionar novamente o mesmo cartão.
         \\
-        \item Baixar Itens: O download é ligado com a compra, cada vez que é feita uma compra, um download é realizado. O mesmo guarda a data e a informação de que o download foi feito, uma forma de demonstrar que o usuário possui o item baixado, para que futuramente por mais que o exclua, continue tendo permissão para baixar novamente.
+        \item Baixar Itens: O download é ligado com a compra (mesmo que seja de um item gratuito), assim cada vez que é feita uma compra, um download é realizado. O mesmo guarda a data e a informação de que o download foi feito, uma forma de demonstrar que o usuário possui o item baixado, para que futuramente por mais que o exclua, continue tendo permissão para baixar novamente, sem que seja necessário pagar pelo mesmo novamente.
     \end{itemize}.
-    \item \textbf{Cartão:} Definido por número (único) data de vencimento e usuário que é dono (único). Sendo responsável, juntamente do usuário, pela ação de compra de itens
+    \item \textbf{Cartão:} Definido por número (único), data de vencimento e usuário que é responsável pelo mesmo (único), além do nome impresso em cima do cartão, já que, como descrito acima, o dono do cartão não necessariamente precisa ser o usuário dono da conta. O cartão é responsável, juntamente do usuário, pela ação de compra de itens
     \item \textbf{Item:} Pode ser livro, aplicativo, álbum de música ou filme, é o objeto de consumo do usuário e base da plataforma.\\
-    Definido por preço (sendo o item considerado gratuito quando for 0 ou nulo, e por isso é opcional), nome, data de lançamento, resumo e código(único). Além disso o item pode entrar na promoção em determinadas épocas, sendo necessário guardar o valor dele com desconto. \\
+    Definido por preço (sendo o item considerado gratuito quando for 0 ou nulo, e por isso é opcional), nome, data de lançamento, resumo e código (único). Além disso o item pode entrar na promoção em determinadas épocas, sendo necessário guardar o valor dele com desconto. \\
     O item é ligado em quase todas as ações disponíveis do usuário (menos adicionar cartões), sendo dividido em quatro partes:
     \begin{itemize}
         \item Aplicativo: Além de todos os atributos do item possui versão, tamanho e um desenvolvedor. 
          \begin{itemize}
             \item Desenvolvedor: Possui endereço, e-mail, senha e uma quantidade $n$ de aplicativos criados. É um tipo de conta, feita para criadores de aplicativos, onde é considerado um desenvolvedor qualquer pessoa que criou uma conta deste tipo, ou seja, não é necessário ter um aplicativo para ser um desenvolvedor.
          \end{itemize}.
-        \item Livro: Além de todos os atributos do item possui isbn (único), número de páginas, um autor e uma linguagem.
+        \item Livro: Além de todos os atributos do item possui ISBN\cite{ISBN} (único), número de páginas, um único autor e uma única linguagem. Diferentes linguagens do mesmo livro, correspondem a diferentes itens.
         \begin{itemize}
             \item Autor: Como o autor pode ser objeto de filtro para busca de livros, é importante que seja padronizado. Dessa forma, sempre que um livro é cadastrado, existe a opção de escolher um autor já existente e caso não exista criar um novo.\\
-            Para que isso seja possível, autores tem um nome único. E tem pelo menos um livro, até $n$.
+            Para que isso seja possível, autores tem um nome único. E tem pelo menos um livro, e no máximo $n$.
             \item Linguagem: Liguagens são pré-definidas, para que possam, além de controlar as linguagens de livros existentes, ajudar em buscas específicas.\\
-            Como linguagens são definidas antes de livros, existem linguagens sem livros cadastrados com elas, mas as mesmas podem ter até $n$ livros. Livros sempre tem apenas uma linguagem, sendo ela obrigatoriamente percentencente a tabela 1 definida após o texto.
+            Como linguagens são definidas antes de livros, existem linguagens sem livros cadastrados com elas, mas as mesmas podem ter até $n$ livros. Livros sempre tem apenas uma linguagem, sendo ela obrigatoriamente percentencente as linguagens descritas na Tabela 1.
         \end{itemize}.
         \item Filme: Além de todos os atributos do item possui duração, linguagens e integrantes.
         \begin{itemize}
             \item Linguagem: Possui o mesmo objetivo da linguagem do livro, com a única diferença de que quando se relaciona com o filme pode ser de dois tipos, áudio ou legenda. Pode existir várias linguagens de áudio e legenda para um mesmo filme, porém não podem se repetir no mesmo filme (ex: duas vezes áudio em português).
-            \item Integrantes: Compostas por nome e função, são pessoas que participaram da produção do filme, com certas funções. Eles são padronizados assim como os autores de livros.
+            \item Integrantes: Compostas por nome, são pessoas que participaram da produção do filme, com certas funções. Uma mesma pessoa pode ter diferentes funções em diferentes filmes, porém não pode desempenhar a mesma função em um único filme.
         \end{itemize}.
         \item Álbum: Além de todos os atributos do item possui faixas de música e artista.
         \begin{itemize}
@@ -533,7 +533,7 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \clearpage
 \section*{Modelo Lógico}
 \begin{figure}[H]
-\includegraphics[angle=90, height=0.75\paperheight]{images/modeloLogico.png}
+\includegraphics[angle=90, height=0.75\paperheight]{images/modeloRelacional.png}
 \end{figure}
 
 %% ===================================
@@ -602,16 +602,15 @@ Entidades:
     \end{itemize}
     \item Author: Mapeamento direto para {\textbf{Author}}.
     \begin{itemize}
-        \item name: Mapeamento direto para {\textbf{Author.name}}, obrigatório e chave primária, pois é a única chave candidata.
+        \item name: Mapeamento direto para {\textbf{Author.name}}, obrigatório e chave primária, pois é a única chave candidata, além de ser o único atributo.
     \end{itemize}
     \item Language: Mapeamento direto para {\textbf{Language}}.
     \begin{itemize}
-        \item name: Mapeamento direto para {\textbf{Language.name}}, obrigatório e chave primária, pois é a única chave candidata.
+        \item name: Mapeamento direto para {\textbf{Language.name}}, obrigatório e chave primária, pois é a única chave candidat, além de ser o único atributoa.
     \end{itemize}
     \item Cast: Mapeamento direto para {\textbf{Cast}}.
     \begin{itemize}
-        \item name: Mapeamento direto para {\textbf{Cast.name}}, obrigatório e chave primária, pois é a única chave candidata.
-        \item function: Mapeamento direto para {\textbf{Cast.function}}, obrigatório.
+        \item name: Mapeamento direto para {\textbf{Cast.name}}, obrigatório e chave primária, pois é a única chave candidata, além de ser o único atributo.
     \end{itemize}
     \item Track: Mapeamento direto para {\textbf{Track}}.
     \begin{itemize}
@@ -655,7 +654,9 @@ Relacionamentos:
     \begin{itemize}
         \item {\textit{item\_id}}: Chave primária do item, que está fazendo parte da chave composta que identifica o prórpio Download. Mapeado para {\textbf{Download.item\_id}}, obrigatório e chave estrangeira.
         \item {\textit{user\_email}}: Chave primária do usuário, mapeado para {\textbf{WhishList.user\_email}}, obrigatório e chave estrangeira.
-        \item 
+        \item first\_downloaded\_date: Mapeamento direto para  {\textbf{Download. \\ first\_downloaded\_date}}, obrigatório.
+        \item last\_downloaded\_date: Mapeamento direto para  {\textbf{Download. \\ last\_downloaded\_date}}, obrigatório.
+        \item downloaded: Mapeamento direto para  {\textbf{Download.downloaded}}, obrigatório.
     \end{itemize}
     \item Development: Mapeamento de relacionamento por colunas adicionais, pois é um relacionamento $1$:$N$. Com a chave estrangeira em App.
     \item Categorization: Mapeamento de relacionamento por tabela própria, pois é um relacionamento $N$:$M$.
@@ -676,6 +677,7 @@ Relacionamentos:
     \begin{itemize}
         \item {\textit{cast\_name}}: Chave estrangeira para Language e que está fazendo parte da chave primária composta. Mapeada para {\textbf{Movie\_Cast.cast\_name}}, obrigatória.
         \item {\textit{movie\_id}}: Chave estrangeira para Movie e que está fazendo parte da chave primária composta. Mapeada para {\textbf{Movie\_Cast.movie\_id}}, obrigatória.
+        \item function: Mapeamento direto para  {\textbf{Movie\_cast.function}}, obrigatório.
     \end{itemize}
     \item Album\_Track: Mapeamento de relacionamento por colunas adicionais, pois é um relacionamento $1$:$N$. Com a chave estrangeira em Track.
     \item Album\_Authorship: Mapeamento de relacionamento por colunas adicionais, pois é um relacionamento $1$:$N$. Com a chave estrangeira em Album.
