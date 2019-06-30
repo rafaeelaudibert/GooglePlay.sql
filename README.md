@@ -18,10 +18,10 @@ The front-end code was build using Flask. To run it, you should configure your d
 
 After, you need to install some dependencies:
 ```bash
-$ pip3 install flask python-dotenv
+$ pip3 install flask python-dotenv json2html
 ```
 
 After, in the `./src` folder you can run `flask run`, and a local server will be started at `localhost:5000`
- 
+
 ## Authors
 This assignment was developed by [Rafael B. Audibert](https://github.com/rafaeelaudibert) and [Ana Carolina Pagnoncelli](https://github.com/Ana2877), feel free to contact any of us if you are interested in this repository content
