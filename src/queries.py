@@ -143,3 +143,31 @@ def person_didnt_downloaded_same_apps(other_email = 'rbaudibert@inf.ufrgs.br'):
         return [{'email': obj[0]} for obj in cursor.fetchall()]
     except (Exception, psycopg2.Error) as error:
         return {"status": "error", "error": error}
+
+def get_all_categorizations():
+    """
+    Retorna uma lista com todas categorizations
+    """
+    try:
+        cursor = db.get_cursor()
+        cursor.execute('SELECT id, category_name, category_item_type, name \
+                        FROM categorization \
+                        JOIN item ON (categorization.item_id = item.id)')
+        return [{'id': obj[0], 'category_name': obj[1], 'category_item_type': obj[2], 'item_name': obj[3]} for obj in cursor.fetchall()]
+    except (Exception, psycopg2.Error) as error:
+        return {"status": "error", "error": error}
+
+def add_categorization(item_uuid, category_name, category_type):
+    """
+    Tenta adicionar uma categorization de `category_name` do tipo `category_type`
+    no Item de uuid `item_uuid`
+    """
+    try:
+        record_to_insert = (item_uuid, category_name, category_type)
+        cursor = db.get_cursor()
+        cursor.execute('INSERT INTO categorization VALUES (%s, %s, %s);', record_to_insert)
+        db.get_db().commit()
+    except (Exception, psycopg2.Error) as error:
+        return {"status": "error", "error": error}
+    
+    return {'row_count': cursor.rowcount, 'status': 'Record inserted successfuly into categorization table'}

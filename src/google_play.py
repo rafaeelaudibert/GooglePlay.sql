@@ -99,3 +99,23 @@ def special_query_3(other_email = 'rbaudibert@inf.ufrgs.br'):
     }
 
     return json.dumps(returned_value, default=str)
+
+@app.route('/pre_trigger_query')
+@app.route('/post_trigger_query')
+def trigger_query():
+    returned_value = {
+        'title': 'Trigger Query',
+        'subtitle': 'All categorizations',
+        'data': queries.get_all_categorizations()
+    }
+
+    return json.dumps(returned_value, default=str)
+
+@app.route('/add_categorization/<string:item_uuid>/<string:category_name>/<string:category_type>')
+def add_categorization(item_uuid, category_name, category_type):
+    returned_value = {
+        'title': 'Add Categorization',
+        'subtitle': 'Add categorization {} - {} on {}'.format(category_name, category_type, item_uuid),
+        'data': queries.add_categorization(item_uuid, category_name, category_type)
+    }
+    return json.dumps(returned_value, default=str)
