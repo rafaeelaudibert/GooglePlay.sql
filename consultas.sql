@@ -33,27 +33,29 @@ CREATE OR REPLACE VIEW full_item AS
 ---
 
 -- Consultas para visões
--- Nome e função dos membros de filmes que estejam em em promoção
+-- Nome e função dos membros de filmes que estejam em promoção
 SELECT movie_cast.cast_name, "function"
 FROM movie_with_item item
 JOIN movie_cast ON (item.id = movie_cast.movie_id)
 WHERE is_promotion = true;
 
--- Nome e nome do artista de todos os álbuns com músicas com mais do que 3 minutos de duração
+-- Nome e nome do artista de todos os álbuns com músicas com mais do que 3 minutos de duração, ordenados pelo nome do artista
 SELECT "name" album_name, artist_name
 FROM album_with_item item
 WHERE item.id IN (
 	SELECT album_id
 	FROM track
 	WHERE duration > 3 * 60
-);
+)
+ORDER BY artist_name;
 
 -- 2.a Definir um conjunto de 6 consultas uteis aos seu UdD, sendo que cada uma delas deve envolver no mínimo 3 tabelas.
--- Nome, email e quantidade de downloads por usuário
+-- Nome, email e quantidade de downloads por usuário ordenados por nome do usuario
 SELECT u.name, email, COUNT(DISTINCT item_id) downloads_count
 FROM "User" u
 LEFT JOIN download ON (download.user_email = u.email)
-GROUP BY email, u.name;
+GROUP BY email, u.name
+ORDER BY u.name;
 
 -- Nome dos usuários que já baixaram um filme que Jason Momoa participou
 SELECT u.name
