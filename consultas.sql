@@ -81,7 +81,8 @@ SELECT developer.name, COUNT(*)
 FROM download
 JOIN app_with_item item ON (download.item_id = item.id)
 JOIN developer ON (item.developer_email = developer.email)
-GROUP BY id, developer.name;
+GROUP BY id, developer.name
+ORDER BY COUNT(*) DESC;
 
 -- b. NECESSITAR ser respondida com subconsulta
 -- Nome e autor dos albuns que foram mais baixados do que a média de downloads
