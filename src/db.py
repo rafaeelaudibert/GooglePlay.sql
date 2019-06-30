@@ -11,6 +11,7 @@ def get_db():
     again.
     """
     if "db" not in g:
+        print("[INFO] Creating DB connection")
         g.db = psycopg2.connect(database='GooglePlay', user="postgres", password="postgres")
 
     return g.db
@@ -21,6 +22,7 @@ def get_cursor():
     """
 
     if "cursor" not in g:
+        print("[INFO] Creting cursor")
         g.cursor = get_db().cursor()
 
     return g.cursor
@@ -33,6 +35,7 @@ def close_db(e=None):
     db = g.pop("db", None)
 
     if db is not None:
+        print("[INFO] Closing DB")
         db.close()
 
 
@@ -40,4 +43,5 @@ def init_app(app):
     """Register database functions with the Flask app. This is called by
     the application factory.
     """
+    print("[INFO] Database app iniciation")
     app.teardown_appcontext(close_db)

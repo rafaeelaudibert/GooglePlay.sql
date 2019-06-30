@@ -23,7 +23,7 @@ def vision_query_1():
         'data': queries.promotion_film_members()
     }
 
-    return json.dumps(returned_value)
+    return json.dumps(returned_value, default=str)
 
 @app.route('/vision_query_2/')
 @app.route('/vision_query_2/<float:minutes>')
@@ -35,7 +35,7 @@ def vision_query_2(minutes = 3):
         'data': queries.artists_and_albuns_with_longer_musics(minutes)
     }
 
-    return json.dumps(returned_value)
+    return json.dumps(returned_value, default=str)
 
 @app.route('/normal_query_1')
 def normal_query_1():
@@ -45,7 +45,7 @@ def normal_query_1():
         'data': queries.download_statistics()
     }
 
-    return json.dumps(returned_value)
+    return json.dumps(returned_value, default=str)
 
 @app.route('/normal_query_2')
 @app.route('/normal_query_2/<string:cast>')
@@ -56,7 +56,7 @@ def normal_query_2(cast = 'Jason Momoa'):
         'data': queries.movie_by_cast(cast)
     }
 
-    return json.dumps(returned_value)
+    return json.dumps(returned_value, default=str)
 
 @app.route('/normal_query_3')
 @app.route('/normal_query_3/<string:language>')
@@ -77,7 +77,7 @@ def special_query_1():
         'data': queries.downloads_by_developer()
     }
 
-    return json.dumps(returned_value)
+    return json.dumps(returned_value, default=str)
 
 @app.route('/special_query_2')
 def special_query_2():
@@ -87,7 +87,7 @@ def special_query_2():
         'data': queries.higher_than_average_albuns()
     }
 
-    return json.dumps(returned_value)
+    return json.dumps(returned_value, default=str)
 
 @app.route('/special_query_3')
 @app.route('/special_query_3/<string:other_email>')
@@ -98,4 +98,4 @@ def special_query_3(other_email = 'rbaudibert@inf.ufrgs.br'):
         'data': queries.person_didnt_downloaded_same_apps(other_email)
     }
 
-    return json.dumps(returned_value)
+    return json.dumps(returned_value, default=str)
