@@ -15,6 +15,14 @@ db.init_app(app)
 def root():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 ## API ROUTES
 @app.route('/vision_query_1', methods=['POST'])
 def vision_query_1():
@@ -26,7 +34,7 @@ def vision_query_1():
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/vision_query_2/', methods=['POST'])
+@app.route('/vision_query_2', methods=['POST'])
 @app.route('/vision_query_2/<float:minutes>', methods=['POST'])
 @app.route('/vision_query_2/<int:minutes>', methods=['POST'])
 def vision_query_2(minutes = 3):

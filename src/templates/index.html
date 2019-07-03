@@ -32,8 +32,8 @@
         <nav role="navigation" class="probootstrap-nav hidden-xs">
           <ul class="probootstrap-main-nav">
             <li class="active"><a href="{{ url_for('root')}}">Home</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="{{ url_for('about') }}">Sobre</a></li>
+            <li><a href="{{ url_for('contact') }}">Contato</a></li>
           </ul>
           <div class="extra-text visible-xs">
             <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
@@ -97,9 +97,17 @@
         <h3 class="mt0 mb40">Membros de Filmes em Promoção</h3>
         <p class="mb50">Seleciona o nome e a função de todos participantes de casts de filmes que estejam em promoção.</p>
         <p class="mb50">
-            <code id="query-1" class="hidden mb50">
+          <table id="query-1" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Função</th>
+              </tr>
+            </thead>
+            <tbody id="query-1-table-body">
 
-            </code>
+            </tbody>
+          </table>
         </p>
         <p><a id="query-1-run" class="btn btn-ghost btn-ghost-white mb10">Rodar query</a></p>
       </div>
@@ -113,9 +121,17 @@
         <h3 class="mt0 mb40">Artistas e Álbuns com músicas longas</h3>
         <p class="mb50">Seleciona os álbuns e o nome dos artistas que possuem músicas mais longas do que <input id="input-query-2" placeholder="3"></input> minutos</p>
         <p class="mb50">
-          <code id="query-2" class="hidden mb50">
+          <table id="query-2" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Nome do Álbum</th>
+                <th>Nome do Artista</th>
+              </tr>
+            </thead>
+            <tbody id="query-2-table-body">
 
-          </code>
+            </tbody>
+          </table>
         </p>
         <p><a id="query-2-run" class="btn btn-ghost btn-ghost-white mb10">Rodar Query</a></p>
       </div>
@@ -129,9 +145,18 @@
         <h3 class="mt0 mb40">Estatísticas de Download</h3>
         <p class="mb50">Retorna o nome e o e-mail de todos usuários, juntamente com a quantidade de downloads realizados</p>
         <p class="mb50">
-            <code id="query-3" class="hidden mb50">
+          <table id="query-3" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Downloads</th>
+              </tr>
+            </thead>
+            <tbody id="query-3-table-body">
 
-            </code>
+            </tbody>
+          </table>
         </p>
         <p><a id="query-3-run" class="btn btn-ghost btn-ghost-white mb10">Rodar query</a></p>
       </div>
@@ -145,9 +170,17 @@
         <h3 class="mt0 mb40">Usuários que assistiram alguém</h3>
         <p class="mb50">Seleciona o nome de todos os usuários que assistiram algum filme em que <input id="input-query-4" placeholder="Jason Momoa"></input> participou</p>
         <p class="mb50">
-          <code id="query-4" class="hidden mb50">
+          <table id="query-4" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Nome do Filme</th>
+              </tr>
+            </thead>
+            <tbody id="query-4-table-body">
 
-          </code>
+            </tbody>
+          </table>
         </p>
         <p><a id="query-4-run" class="btn btn-ghost btn-ghost-white mb10">Rodar Query</a></p>
       </div>
@@ -161,9 +194,18 @@
         <h3 class="mt0 mb40">Livros na Lista de Desejos por Língua</h3>
         <p class="mb50">Seleciona o nome de todos os usuários que adicionaram algum livro escrito na língua <input id="input-query-5" placeholder="Português"></input>, na sua Lista de Desejos</p>
         <p class="mb50">
-            <code id="query-5" class="hidden mb50">
+          <table id="query-5" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Data</th>
+                <th>Livro</th>
+              </tr>
+            </thead>
+            <tbody id="query-5-table-body">
 
-            </code>
+            </tbody>
+          </table>
         </p>
         <p><a id="query-5-run" class="btn btn-ghost btn-ghost-white mb10">Rodar query</a></p>
       </div>
@@ -177,9 +219,17 @@
         <h3 class="mt0 mb40">Downloads por Desenvolvedor</h3>
         <p class="mb50">Retorna uma lista com todos os desenvolvedores de aplicativos, com a quantidade de downloads que os aplicativos daquele desenvolvedor tiveram</p>
         <p class="mb50">
-          <code id="query-6" class="hidden mb50">
+          <table id="query-6" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Desenvolvedor</th>
+                <th>Downloads</th>
+              </tr>
+            </thead>
+            <tbody id="query-6-table-body">
 
-          </code>
+            </tbody>
+          </table>
         </p>
         <p><a id="query-6-run" class="btn btn-ghost btn-ghost-white mb10">Rodar Query</a></p>
       </div>
@@ -193,9 +243,17 @@
         <h3 class="mt0 mb40">Álbuns acima da Média</h3>
         <p class="mb50">Retorna o nome do álbum e do artista que o gravou, para todos aqueles álbuns que foram baixados acima da média de downloads de álbuns</p>
         <p class="mb50">
-            <code id="query-7" class="hidden mb50">
+          <table id="query-7" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Nome do Álbum</th>
+                <th>Nome do Artista</th>
+              </tr>
+            </thead>
+            <tbody id="query-7-table-body">
 
-            </code>
+            </tbody>
+          </table>
         </p>
         <p><a id="query-7-run" class="btn btn-ghost btn-ghost-white mb10">Rodar query</a></p>
       </div>
@@ -209,9 +267,16 @@
         <h3 class="mt0 mb40">Downloads de mesmo app</h3>
         <p class="mb50">Retorna o email de todos os usuários que não baixaram NENHUM item igual ao usuário com email <input id="input-query-8" placeholder="rbaudibert@inf.ufrgs.br"></input></p>
         <p class="mb50">
-          <code id="query-8" class="hidden mb50">
+          <table id="query-8" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody id="query-8-table-body">
 
-          </code>
+            </tbody>
+          </table>
         </p>
         <p><a id="query-8-run" class="btn btn-ghost btn-ghost-white mb10">Rodar Query</a></p>
       </div>
@@ -267,11 +332,20 @@
         <h3 class="mt0 mb40">Categorização</h3>
         <p class="mb50">Retorna os dados presentes na tabela categorização</p>
         <p class="mb50">
-            <code id="query-7" class="hidden mb50">
+          <table id="query-9" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Categoria</th>
+                <th>Tipo de Categoria</th>
+              </tr>
+            </thead>
+            <tbody id="query-9-table-body">
 
-            </code>
+            </tbody>
+          </table>
         </p>
-        <p><a id="query-7-run" class="btn btn-ghost btn-ghost-white mb10">Rodar query</a></p>
+        <p><a id="query-9-run" class="btn btn-ghost btn-ghost-white mb10">Rodar query</a></p>
       </div>
     </section>
     <section class="probootstrap-half">
@@ -290,11 +364,20 @@
           <input id="input-insert-3" placeholder="Tipo da Categoria"></input>
         </p>
         <p class="mb50">
-          <code id="query-8" class="hidden mb50">
+          <table id="query-10" class="table table-borderless table-responsive hidden mb50">
+            <thead>
+              <tr>
+                <th>Inserções</th>
+                <th>Status</th>
+                <th>Erro</th>
+              </tr>
+            </thead>
+            <tbody id="query-10-table-body">
 
-          </code>
+            </tbody>
+          </table>
         </p>
-        <p><a id="query-8-run" class="btn btn-ghost btn-ghost-white mb10">Rodar Query</a></p>
+        <p><a id="query-10-run" class="btn btn-ghost btn-ghost-white mb10">Rodar Query</a></p>
       </div>
     </section>  
 
@@ -310,7 +393,6 @@
               <div class="probootstrap-footer-widget">
               <h3>Sobre o Trabalho</h3>
               <p>Trabalho desenvolvido sobre orientação da professora <a href="https://inf.ufrgs.br/~kbecker">Karin Becker</a> no Instituto de Informática - UFRGS, no âmbito da disciplina Fundamentos de Banco de Dados</p>
-              <p><a href="#" class="btn btn-ghost btn-ghost-white btn-sm">I'm a button</a></p>
               </div>
             </div>
             <div class="col-md-4">
@@ -348,7 +430,7 @@
     <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
   </div>
   
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.2.0/json2html.min.js"></script>
   <script src="{{ url_for('static', filename='js/scripts.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/main.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/custom.js') }}"></script>

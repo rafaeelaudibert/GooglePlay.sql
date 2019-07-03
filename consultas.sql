@@ -58,7 +58,7 @@ GROUP BY email, u.name
 ORDER BY u.name;
 
 -- Nome dos usuários que já baixaram um filme que Jason Momoa participou
-SELECT u.name
+SELECT u.name user_name, item.name item_name
 FROM "User" u
 JOIN download ON (download.user_email = u.email)
 JOIN movie_with_item item ON (item.id = download.item_id)

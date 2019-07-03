@@ -59,13 +59,13 @@ def movie_by_cast(cast = 'Jason Momoa'):
     Retorna nome de todos usuários que baixaram algum filme em que `cast` participou
     """
     try:
-        query = run_select_query('SELECT u.name \
+        query = run_select_query('SELECT u.name user_name, item.name item_name \
                                   FROM "User" u \
                                   JOIN download ON (download.user_email = u.email) \
                                   JOIN movie_with_item item ON (item.id = download.item_id) \
                                   JOIN movie_cast ON (movie_cast.movie_id = item.id) \
                                   WHERE cast_name = %s;', (cast, ))
-        return [{'name': obj[0]} for obj in query]
+        return [{'name': obj[0], "movie_name": obj[1]} for obj in query]
     except (Exception, psycopg2.Error) as error:
         return {"status": "error", "error": error}
 
@@ -152,7 +152,7 @@ def get_all_categorizations():
         query = run_select_query('SELECT id, category_name, category_item_type, name \
                                   FROM categorization \
                                   JOIN item ON (categorization.item_id = item.id)')
-        return [{'id': obj[0], 'category_name': obj[1], 'category_item_type': obj[2], 'item_name': obj[3]} for obj in query]
+        return [{'id': obj[0], 'category_name': obj[1], 'category_item_type': obj[2].capitalize(), 'item_name': obj[3]} for obj in query]
     except (Exception, psycopg2.Error) as error:
         return {"status": "error", "error": error}
 
@@ -167,8 +167,8 @@ def add_categorization(item_uuid, category_name, category_type):
         cursor.execute('INSERT INTO categorization VALUES (%s, %s, %s);', record_to_insert)
         db.get_db().commit()
 
-        return {'row_count': cursor.rowcount, 'status': 'Record inserted successfuly into categorization table'}
+        return {'row_count': cursor.rowcount, 'status': 'Record inserted successfuly into categorization table', 'error': ''}
     except (Exception, psycopg2.Error) as error:
-        return {"status": "error", "error": error}
+        return {'row_count': 0, "status": "error", "error": error}
     
     
