@@ -36,7 +36,7 @@ jQuery(document).ready(function() {
 		const input_field = document.getElementById('input-query-2');
 
 		const {data} = await $.ajax({
-			url: './vision_query_2/' + (input_field.value || input_field.placeholder),
+			url: './vision_query_2/' + input_field.value,
 			method: 'POST',
 			dataType: "json"
 		});
@@ -78,7 +78,7 @@ jQuery(document).ready(function() {
 		const input_field = document.getElementById('input-query-4');
 
 		const {data} = await $.ajax({
-			url: 'normal_query_2/' + (input_field.value || input_field.placeholder),
+			url: 'normal_query_2/' + input_field.value,
 			method: 'POST',
 			dataType: "json"
 		});
@@ -100,7 +100,7 @@ jQuery(document).ready(function() {
 		const input_field = document.getElementById('input-query-5');
 
 		const {data} = await $.ajax({
-			url: 'normal_query_3/' + (input_field.value || input_field.placeholder),
+			url: 'normal_query_3/' + input_field.value,
 			method: 'POST',
 			dataType: "json"
 		});
@@ -158,7 +158,7 @@ jQuery(document).ready(function() {
 		const input_field = document.getElementById('input-query-8');
 
 		const {data} = await $.ajax({
-			url: 'special_query_3/' + (input_field.value || input_field.placeholder),
+			url: 'special_query_3/' + input_field.value,
 			method: 'POST',
 			dataType: "json"
 		});
