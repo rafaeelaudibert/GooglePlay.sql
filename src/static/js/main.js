@@ -504,7 +504,6 @@
 		});
 
 		$(window).scroll(function(){
-			console.log('scrolling');
 			var $win = $(window);
 			if ($win.scrollTop() > 200) {
 				$('.js-top').addClass('active');
