@@ -1592,9 +1592,10 @@ a {
 	}
 }
 .owl-carousel .owl-controls,
-.owl-carousel-posts .owl-controls, {
+.owl-carousel-posts .owl-controls {
 	margin-top: 0;
 }
+
 .owl-carousel .owl-controls .owl-nav .owl-next,
 .owl-carousel .owl-controls .owl-nav .owl-prev,
 .owl-carousel-posts .owl-controls .owl-nav .owl-next,
@@ -1779,6 +1780,7 @@ a {
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
 	opacity: 0;
+	backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
 	-webkit-transition: all 0.3s ease-out; 
 	-moz-transition: all 0.3s ease-out; 
