@@ -20,8 +20,7 @@ jQuery(document).ready(function() {
 			dataType: "json"
 		});
 
-		document.getElementById('query-1-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-1').classList.remove('hidden');
+		$('#query-1-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 	// Query 2 parsing
@@ -37,13 +36,12 @@ jQuery(document).ready(function() {
 		const input_field = document.getElementById('input-query-2');
 
 		const {data} = await $.ajax({
-			url: './vision_query_2/' + input_field.value || input_field.placeholder,
+			url: './vision_query_2/' + (input_field.value || input_field.placeholder),
 			method: 'POST',
 			dataType: "json"
 		});
 
-		document.getElementById('query-2-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-2').classList.remove('hidden');
+		$('#query-2-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 	// Query 3 parsing
@@ -64,8 +62,7 @@ jQuery(document).ready(function() {
 			dataType: "json"
 		});
 
-		document.getElementById('query-3-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-3').classList.remove('hidden');
+		$('#query-3-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 	// Query 4 parsing
@@ -86,8 +83,7 @@ jQuery(document).ready(function() {
 			dataType: "json"
 		});
 
-		document.getElementById('query-4-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-4').classList.remove('hidden');
+		$('#query-4-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 	// Query 5 parsing
@@ -109,8 +105,7 @@ jQuery(document).ready(function() {
 			dataType: "json"
 		});
 
-		document.getElementById('query-5-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-5').classList.remove('hidden');
+		$('#query-5-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 	// Query 6 parsing
@@ -129,8 +124,7 @@ jQuery(document).ready(function() {
 			dataType: "json"
 		});
 
-		document.getElementById('query-6-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-6').classList.remove('hidden');
+		$('#query-6-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 	// Query 7 parsing
@@ -149,8 +143,7 @@ jQuery(document).ready(function() {
 			dataType: "json"
 		});
 
-		document.getElementById('query-7-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-7').classList.remove('hidden');
+		$('#query-7-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 	// Query 8 parsing
@@ -170,8 +163,7 @@ jQuery(document).ready(function() {
 			dataType: "json"
 		});
 
-		document.getElementById('query-8-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-8').classList.remove('hidden');
+		$('#query-8-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 	// Query 9 parsing
@@ -191,8 +183,7 @@ jQuery(document).ready(function() {
 			dataType: "json"
 		});
 
-		document.getElementById('query-9-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-9').classList.remove('hidden');
+		$('#query-9-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 	// Query 10 parsing
@@ -216,8 +207,7 @@ jQuery(document).ready(function() {
 			dataType: "json"
 		});
 
-		document.getElementById('query-10-table-body').innerHTML = json2html.transform(data, transform);
-		document.getElementById('query-10').classList.remove('hidden');
+		$('#query-10-table-body').html(json2html.transform(data, transform)).parent().removeClass('hidden');
 	});
 
 });
