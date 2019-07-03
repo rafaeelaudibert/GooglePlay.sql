@@ -1,6 +1,16 @@
 /* Your custom css code goes here */
 
 input {
-    color: black;
+    color: rgba(255, 255, 255, 0.5);
     padding-left: 0.25rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-bottom: 1px rgba(255, 255, 255, 0.5) solid;
+    transition: border-bottom-color 0.25s ease-in-out;
+}
+
+input:active, input:focus {
+    outline: none;
+    border-bottom-color: rgba(255, 255, 255, 1.0);
+    transition: border-bottom-color 0.25s ease-in-out;
 }
