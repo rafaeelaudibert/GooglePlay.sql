@@ -16,7 +16,7 @@ db.init_app(app)
 def hello_world():
     return 'Fundamentos de Bancos de Dados'
 
-@app.route('/vision_query_1')
+@app.route('/vision_query_1', methods=['POST'])
 def vision_query_1():
     returned_value = {
         'title': 'Vision Query 1',
@@ -26,9 +26,9 @@ def vision_query_1():
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/vision_query_2/')
-@app.route('/vision_query_2/<float:minutes>')
-@app.route('/vision_query_2/<int:minutes>')
+@app.route('/vision_query_2/', methods=['POST'])
+@app.route('/vision_query_2/<float:minutes>', methods=['POST'])
+@app.route('/vision_query_2/<int:minutes>', methods=['POST'])
 def vision_query_2(minutes = 3):
     returned_value = {
         'title': 'Vision Query 2',
@@ -38,7 +38,7 @@ def vision_query_2(minutes = 3):
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/normal_query_1')
+@app.route('/normal_query_1', methods=['POST'])
 def normal_query_1():
     returned_value = {
         'title': 'Normal Query 1',
@@ -48,8 +48,8 @@ def normal_query_1():
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/normal_query_2')
-@app.route('/normal_query_2/<string:cast>')
+@app.route('/normal_query_2', methods=['POST'])
+@app.route('/normal_query_2/<string:cast>', methods=['POST'])
 def normal_query_2(cast = 'Jason Momoa'):
     returned_value = {
         'title': 'Normal Query 2',
@@ -59,8 +59,8 @@ def normal_query_2(cast = 'Jason Momoa'):
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/normal_query_3')
-@app.route('/normal_query_3/<string:language>')
+@app.route('/normal_query_3', methods=['POST'])
+@app.route('/normal_query_3/<string:language>', methods=['POST'])
 def normal_query_3(language = 'Português'):
     returned_value = {
         'title': 'Normal Query 3',
@@ -70,7 +70,7 @@ def normal_query_3(language = 'Português'):
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/special_query_1')
+@app.route('/special_query_1', methods=['POST'])
 def special_query_1():
     returned_value = {
         'title': 'Special Query 1 - Group by',
@@ -80,7 +80,7 @@ def special_query_1():
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/special_query_2')
+@app.route('/special_query_2', methods=['POST'])
 def special_query_2():
     returned_value = {
         'title': 'Special Query 2 - Subquery',
@@ -90,8 +90,8 @@ def special_query_2():
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/special_query_3')
-@app.route('/special_query_3/<string:other_email>')
+@app.route('/special_query_3', methods=['POST'])
+@app.route('/special_query_3/<string:other_email>', methods=['POST'])
 def special_query_3(other_email = 'rbaudibert@inf.ufrgs.br'):
     returned_value = {
         'title': 'Special Query 3 - Not Exists Operator',
@@ -101,8 +101,8 @@ def special_query_3(other_email = 'rbaudibert@inf.ufrgs.br'):
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/pre_trigger_query')
-@app.route('/post_trigger_query')
+@app.route('/pre_trigger_query', methods=['POST'])
+@app.route('/post_trigger_query', methods=['POST'])
 def trigger_query():
     returned_value = {
         'title': 'Trigger Query',
@@ -112,7 +112,7 @@ def trigger_query():
 
     return json.dumps(returned_value, default=str)
 
-@app.route('/add_categorization/<string:item_uuid>/<string:category_name>/<string:category_type>')
+@app.route('/add_categorization/<string:item_uuid>/<string:category_name>/<string:category_type>', methods=['POST'])
 def add_categorization(item_uuid, category_name, category_type):
     returned_value = {
         'title': 'Add Categorization',
