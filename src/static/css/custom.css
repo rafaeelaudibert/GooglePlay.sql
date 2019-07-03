@@ -1,1 +1,6 @@
 /* Your custom css code goes here */
+
+input {
+    color: black;
+    padding-left: 0.25rem;
+}

@@ -10,11 +10,10 @@ app = Flask(__name__)
 # Configure database callbacks for this app
 db.init_app(app)
 
-
 ## ROUTING
 @app.route('/')
-def hello_world():
-    return render_template('layout.html')
+def root():
+    return render_template('index.html')
 
 ## API ROUTES
 @app.route('/vision_query_1', methods=['POST'])

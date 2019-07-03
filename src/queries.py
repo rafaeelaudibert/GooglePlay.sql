@@ -129,17 +129,17 @@ def person_didnt_downloaded_same_apps(other_email = 'rbaudibert@inf.ufrgs.br'):
     """
     try:
         query = run_select_query('SELECT email \
-                        FROM "User" u \
-                        WHERE NOT EXISTS ( \
-                            SELECT * \
-                            FROM download \
-                            WHERE (u.email = download.user_email) \
-                                AND item_id IN ( \
-                                    SELECT item_id \
-                                    FROM download \
-                                    WHERE (user_email = %s) \
-                            ) \
-                        );', (other_email,))
+                                  FROM "User" u \
+                                  WHERE NOT EXISTS ( \
+                                      SELECT * \
+                                      FROM download \
+                                      WHERE (u.email = download.user_email) \
+                                          AND item_id IN ( \
+                                              SELECT item_id \
+                                              FROM download \
+                                              WHERE (user_email = %s) \
+                                      ) \
+                                  );', (other_email,))
         return [{'email': obj[0]} for obj in query]
     except (Exception, psycopg2.Error) as error:
         return {"status": "error", "error": error}
@@ -166,7 +166,7 @@ def add_categorization(item_uuid, category_name, category_type):
         cursor = db.get_cursor()
         cursor.execute('INSERT INTO categorization VALUES (%s, %s, %s);', record_to_insert)
         db.get_db().commit()
-        
+
         return {'row_count': cursor.rowcount, 'status': 'Record inserted successfuly into categorization table'}
     except (Exception, psycopg2.Error) as error:
         return {"status": "error", "error": error}
