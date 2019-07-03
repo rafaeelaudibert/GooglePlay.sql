@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from json2html import *
 import json
 import db
@@ -14,8 +14,9 @@ db.init_app(app)
 ## ROUTING
 @app.route('/')
 def hello_world():
-    return 'Fundamentos de Bancos de Dados'
+    return render_template('layout.html')
 
+## API ROUTES
 @app.route('/vision_query_1', methods=['POST'])
 def vision_query_1():
     returned_value = {
