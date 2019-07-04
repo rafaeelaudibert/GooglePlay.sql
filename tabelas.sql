@@ -14,7 +14,7 @@ CREATE TABLE Item (
     name VARCHAR(80) NOT NULL,
     release_date DATE NOT NULL,
     price NUMERIC(5,2),
-    is_promotion BOOLEAN NOT NULL,
+    promotion_date DATE,
     promotion_price NUMERIC(5,2),
     about VARCHAR(1000) NOT NULL,
     type CHAR(5) NOT NULL
@@ -30,7 +30,6 @@ CREATE TABLE Attachment (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
-
 
 
 -- User and dependents creation
@@ -125,6 +124,7 @@ CREATE TABLE Author (
 CREATE TABLE "Cast" (
     name VARCHAR(80) PRIMARY KEY UNIQUE NOT NULL
 );
+
 
 CREATE TABLE Category (
     name VARCHAR(25) NOT NULL,

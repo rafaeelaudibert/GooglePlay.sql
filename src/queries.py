@@ -19,7 +19,7 @@ def promotion_film_members():
         query = run_select_query('SELECT movie_cast.cast_name, "function" \
                                   FROM movie_with_item item \
                                   JOIN movie_cast ON (item.id = movie_cast.movie_id) \
-                                  WHERE is_promotion = true;')
+                                  WHERE promotion_date is not null and CURRENT_TIMESTAMP(0) <= promotion_date;')
         return [{'name': obj[0], 'function': obj[1]} for obj in query]
     except (Exception, psycopg2.Error) as error:
         return {"status": "error", "error": error}

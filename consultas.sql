@@ -37,7 +37,8 @@ CREATE OR REPLACE VIEW full_item AS
 SELECT movie_cast.cast_name, "function"
 FROM movie_with_item item
 JOIN movie_cast ON (item.id = movie_cast.movie_id)
-WHERE is_promotion = true;
+WHERE promotion_date is not null and
+	CURRENT_TIMESTAMP(0) <= promotion_date;
 
 -- Nome e nome do artista de todos os álbuns com músicas com mais do que 3 minutos de duração, ordenados pelo nome do artista
 SELECT "name" album_name, artist_name
