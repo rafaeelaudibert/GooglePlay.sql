@@ -113,18 +113,9 @@ CREATE TABLE Developer (
     password VARCHAR NOT NULL
 );
 
-CREATE TABLE Artist (
+CREATE TABLE Person (
     name VARCHAR(80) PRIMARY KEY UNIQUE NOT NULL
 );
-
-CREATE TABLE Author (
-    name VARCHAR(80) PRIMARY KEY UNIQUE NOT NULL
-);
-
-CREATE TABLE "Cast" (
-    name VARCHAR(80) PRIMARY KEY UNIQUE NOT NULL
-);
-
 
 CREATE TABLE Category (
     name VARCHAR(25) NOT NULL,
@@ -168,7 +159,7 @@ CREATE TABLE Album (
     FOREIGN KEY (id) REFERENCES Item (id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    FOREIGN KEY (artist_name) REFERENCES Artist (name)
+    FOREIGN KEY (artist_name) REFERENCES Person (name)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );
@@ -194,7 +185,7 @@ CREATE TABLE Book (
     FOREIGN KEY (id) REFERENCES Item (id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    FOREIGN KEY (author_name) REFERENCES Author (name)
+    FOREIGN KEY (author_name) REFERENCES Person (name)
         ON DELETE RESTRICT
         ON UPDATE CASCADE,
     FOREIGN KEY (language_name) REFERENCES Language (name)
@@ -234,7 +225,7 @@ CREATE TABLE Movie_Cast (
     FOREIGN KEY (movie_id) REFERENCES Movie (id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    FOREIGN KEY (cast_name) REFERENCES "Cast" (name)
+    FOREIGN KEY (cast_name) REFERENCES Person (name)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
 );

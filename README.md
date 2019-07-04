@@ -8,7 +8,7 @@ The assignment final report can be found at [report.pdf](./report.pdf) (in Portu
 
 ## Assignment
 
-This assignment intends to try to recreate a possible database model used by [Google](https://google.com) on his website, and app for Androind, [Google Play](https://play.google.com).
+This assignment intends to try to recreate a possible database model used by [Google](https://google.com) on his website, and app for Android, [Google Play](https://play.google.com).
 
 ![google-play](./images/google-play.png)
 

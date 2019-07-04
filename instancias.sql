@@ -128,40 +128,30 @@ INSERT INTO Developer VALUES ('gp-info@supercell.com', 'Supercell', 'Itamerenkat
 -- DELETE FROM Developer; 	-- Helper to delete all Developer instances
 
 ----
--- Artist insertion 
-INSERT INTO Artist VALUES ('Twenty One Pilots');
-INSERT INTO Artist VALUES ('Mumford & Sons');
-INSERT INTO Artist VALUES ('The Lumineers');
-INSERT INTO Artist VALUES ('XXXTENTACION');
-INSERT INTO Artist VALUES ('Of Monsters and Men');
--- SELECT * from Artist; 	-- Helper to display all Artist instances
--- DELETE FROM Artist;		-- Helper to delete all Artist instances
-
-----
--- Author insertion 
-INSERT INTO Author VALUES ('Sun Tzu');
-INSERT INTO Author VALUES ('Beth Reekles');
-INSERT INTO Author VALUES ('Charles Duhigg');
-INSERT INTO Author VALUES ('Veronica Roth');
-INSERT INTO Author VALUES ('Blake Pierce');
--- SELECT * from Author; 	-- Helper to display all Author instances
--- DELETE FROM Author;		-- Helper to delete all Author instances
-
-----
--- "Cast" insertion 
-INSERT INTO "Cast" VALUES ('Jessica Rothe');
-INSERT INTO "Cast" VALUES ('Steve Zissis');
-INSERT INTO "Cast" VALUES ('Cristopher Landon');
-INSERT INTO "Cast" VALUES ('Scott Lodbel');
-INSERT INTO "Cast" VALUES ('Alison Eastwood');
-INSERT INTO "Cast" VALUES ('Nick Schenk');
-INSERT INTO "Cast" VALUES ('America Ferrera');
-INSERT INTO "Cast" VALUES ('Dean DeBlois');
-INSERT INTO "Cast" VALUES ('Jason Momoa');
-INSERT INTO "Cast" VALUES ('Will Beal');
-INSERT INTO "Cast" VALUES ('Joe Russo');
--- SELECT * from "Cast"; 	-- Helper to display all "Cast" instances
--- DELETE FROM "Cast";		-- Helper to delete all "Cast" instances
+-- Person insertion
+INSERT INTO Person VALUES ('Twenty One Pilots');
+INSERT INTO Person VALUES ('Mumford & Sons');
+INSERT INTO Person VALUES ('The Lumineers');
+INSERT INTO Person VALUES ('XXXTENTACION');
+INSERT INTO Person VALUES ('Of Monsters and Men');
+INSERT INTO Person VALUES ('Sun Tzu');
+INSERT INTO Person VALUES ('Beth Reekles');
+INSERT INTO Person VALUES ('Charles Duhigg');
+INSERT INTO Person VALUES ('Veronica Roth');
+INSERT INTO Person VALUES ('Blake Pierce');
+INSERT INTO Person VALUES ('Jessica Rothe');
+INSERT INTO Person VALUES ('Steve Zissis');
+INSERT INTO Person VALUES ('Cristopher Landon');
+INSERT INTO Person VALUES ('Scott Lodbel');
+INSERT INTO Person VALUES ('Alison Eastwood');
+INSERT INTO Person VALUES ('Nick Schenk');
+INSERT INTO Person VALUES ('America Ferrera');
+INSERT INTO Person VALUES ('Dean DeBlois');
+INSERT INTO Person VALUES ('Jason Momoa');
+INSERT INTO Person VALUES ('Will Beal');
+INSERT INTO Person VALUES ('Joe Russo');
+-- SELECT * from Person; 	-- Helper to display all Person instances
+-- DELETE FROM Person;		-- Helper to delete all Person instances
 
 ----
 -- Category insertion 
