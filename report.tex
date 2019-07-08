@@ -8,6 +8,36 @@
 \usepackage[brazilian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.98,0.98,0.98}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{blue},
+    keywordstyle=\color{codegreen},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 
 \begin{document}
 %Header-Make sure you update this information!!!!
@@ -33,9 +63,9 @@ O universo é composto por:
 \begin{itemize}
     \item \textbf{Usuário:} Deve possuir nome, senha, cpf, data de nascimento e email (único). O usuário é responsável pela maior parte das ações no aplicativo, sendo elas:
     \begin{itemize}
-        \item Comprar Itens (livros, álbuns de música, aplicativos e filmes): Pode comprar quantos e quaisquer itens que quiser, porém apenas uma vez cada um deles. As compras só podem ser feitas por cartão e aceitas se o usuário tiver um cartão cadastrado e pagar o preço referente ao item. Os itens gratuitos são classificados como compras também, porém não necessitam que o usuário tenha cartões cadastrados.\\
+        \item Comprar Itens (livros, álbuns de música, aplicativos e filmes): Pode-se fazer o download de quantos e quaisquer itens que quiser, porém nunca o mesmo item duas vezes. Existem itens que são pagos, e portanto, suas compras só podem ser feitas por cartão e aceitas se o usuário tiver um cartão cadastrado e pagar o preço referente ao item.\\
         Depois de comprado o item, o download do mesmo é feito, e a informação de que o download foi feito é salva. Fazendo com
-        que o item seja eternamente do usuário, ou seja, se ele quiser excluir do celular, terá a possibilidade de baixar novamente quando quiser, sem precisar comprar de novo.
+        que o item seja eternamente do usuário, ou seja, se ele quiser excluir do celular, terá a possibilidade de baixar novamente quando quiser, sem precisar pagar novamente.
         \\
         \item Adicionar Itens na Lista de Desejos: Quando o usuário encontra um item que gosta e tem intenção de comprar no futuro, adiciona na sua lista de desejos, que o possibilita voltar a qualquer momento e achar o item de forma rápida. Podem ser adicionados quantos e quaisquer itens que desejar, porém apenas uma vez cada um deles.
         \\
@@ -46,38 +76,37 @@ O universo é composto por:
         \\
         \item Baixar Itens: O download é ligado com a compra (mesmo que seja de um item gratuito), assim cada vez que é feita uma compra, um download é realizado. O mesmo guarda a data e a informação de que o download foi feito, uma forma de demonstrar que o usuário possui o item baixado, para que futuramente por mais que o exclua, continue tendo permissão para baixar novamente, sem que seja necessário pagar pelo mesmo novamente.
     \end{itemize}.
-    \item \textbf{Cartão:} Definido por número (único), data de vencimento e usuário que é responsável pelo mesmo (único), além do nome impresso em cima do cartão, já que, como descrito acima, o dono do cartão não necessariamente precisa ser o usuário dono da conta. O cartão é responsável, juntamente do usuário, pela ação de compra de itens
-    \item \textbf{Item:} Pode ser livro, aplicativo, álbum de música ou filme, é o objeto de consumo do usuário e base da plataforma.\\
-    Definido por preço (sendo o item considerado gratuito quando for 0 ou nulo, e por isso é opcional), nome, data de lançamento, resumo e código (único). Além disso o item pode entrar na promoção em determinadas épocas, sendo necessário guardar o valor dele com desconto. \\
-    O item é ligado em quase todas as ações disponíveis do usuário (menos adicionar cartões), sendo dividido em quatro partes:
+    \item \textbf{Cartão:} Definido por número (único), data de vencimento e usuário que é responsável pelo mesmo (único), além do nome impresso em cima do cartão, já que, como descrito acima, o dono do cartão não necessariamente precisa ser o usuário dono da conta. Sendo o usuário com um ou mais cartões, responsável pela compra de itens (que possuem um valor maior que zero). Não existem cartões que não possuam um dono, e cada cartão pode pertencer a somente um usuário.
+    \item \textbf{Item:} Pode ser livro, aplicativo, álbum de música ou filme, e é o objeto de consumo do usuário e base da plataforma.\\
+    Definido por preço (sendo o item considerado gratuito quando esse campo tiver o valor 0, ou não estiver preenchido, já que é opcional), nome, data de lançamento, resumo e código (único). Além disso o item pode entrar na promoção, sendo necessário guardar o valor dele com desconto e sua data limite de promoção (que pode ser nula caso o item não esteja em promoção). Caso a data atual seja menor do que a data limite da promoção, entende-se que o item está em promoção, portanto o valor do item, é o valor com desconto. Não existe interesse do sistema em armazenas um histórico de promoções\\
+    O item é ligado em quase todas as ações disponíveis do usuário (menos adicionar cartões), sendo dividido em quatro tipos:
     \begin{itemize}
-        \item Aplicativo: Além de todos os atributos do item possui versão, tamanho e um desenvolvedor. 
+        \item Aplicativo: Além de todos os atributos do item possui versão, tamanho (que pode ser, no máximo 1TB) e um desenvolvedor. 
          \begin{itemize}
             \item Desenvolvedor: Possui endereço, e-mail, senha e uma quantidade $n$ de aplicativos criados. É um tipo de conta, feita para criadores de aplicativos, onde é considerado um desenvolvedor qualquer pessoa que criou uma conta deste tipo, ou seja, não é necessário ter um aplicativo para ser um desenvolvedor.
          \end{itemize}.
         \item Livro: Além de todos os atributos do item possui ISBN\cite{ISBN} (único), número de páginas, um único autor e uma única linguagem. Diferentes linguagens do mesmo livro, correspondem a diferentes itens.
         \begin{itemize}
-            \item Autor: Como o autor pode ser objeto de filtro para busca de livros, é importante que seja padronizado. Dessa forma, sempre que um livro é cadastrado, existe a opção de escolher um autor já existente e caso não exista criar um novo.\\
-            Para que isso seja possível, autores tem um nome único. E tem pelo menos um livro, e no máximo $n$.
+            \item Autor: Autores são pessoas que produziram algum conteúdo que está disponibilizado no sistema. Autores de livros também podem ter produzido algum álbum, ou ter participado de algum filme. Sempre que um livro é cadastrado, é necessário autor já existente, ou, caso não exista criar um novo.\\
             \item Linguagem: Liguagens são pré-definidas, para que possam, além de controlar as linguagens de livros existentes, ajudar em buscas específicas.\\
-            Como linguagens são definidas antes de livros, existem linguagens sem livros cadastrados com elas, mas as mesmas podem ter até $n$ livros. Livros sempre tem apenas uma linguagem, sendo ela obrigatoriamente percentencente as linguagens descritas na Tabela 1.
+            Como linguagens são definidas antes de livros, existem linguagens sem livros cadastrados com elas, mas as mesmas podem ter até $n$ livros. Livros sempre tem apenas uma linguagem. Inicialmente, o sistema possuirá as as linguagens descritas na Tabela 1, porém, futuramente poderão ser adicionadas novas linguagens ao sistema, de acordo com a expansão do mesmo.
         \end{itemize}.
         \item Filme: Além de todos os atributos do item possui duração, linguagens e integrantes.
         \begin{itemize}
             \item Linguagem: Possui o mesmo objetivo da linguagem do livro, com a única diferença de que quando se relaciona com o filme pode ser de dois tipos, áudio ou legenda. Pode existir várias linguagens de áudio e legenda para um mesmo filme, porém não podem se repetir no mesmo filme (ex: duas vezes áudio em português).
-            \item Integrantes: Compostas por nome, são pessoas que participaram da produção do filme, com certas funções. Uma mesma pessoa pode ter diferentes funções em diferentes filmes, porém não pode desempenhar a mesma função em um único filme.
+            \item Integrantes: Compostas por nome, são pessoas que participaram da produção do filme, com certas funções. Uma mesma pessoa pode ter diferentes funções em diferentes filmes, porém não pode desempenhar a mesma função duas vezes no mesmo filme. Esses integrantes também podem ter escrito algum livro, ou lançado um álbum.
         \end{itemize}.
         \item Álbum: Além de todos os atributos do item possui faixas de música e artista.
         \begin{itemize}
-            \item Faixa de Música: São as músicas que compõem o álbum, elas tem um nome único e uma duração. Cada música só está presente em um álbum, porém um álbum tem várias músicas.
-            \item Artista: É o cantor ou grupo que criou o álbum. Tem um nome único e pode possuir quantos álbuns quiser, porém um álbum só tem um artista que o compôs. Eles são padronizados assim como os autores de livros.
+            \item Artista: É o cantor ou grupo que criou o álbum, que pode também ter escrito algum livro, ou participado de algum filme. Tem um nome único e pode possuir quantos álbuns quiser, porém um álbum só tem um artista que o compôs.
+            \item Faixa de Música: São as músicas que compõem o álbum, elas tem um nome único e uma duração. Cada música só está presente em um álbum, porém um álbum tem várias músicas. Entende-se que o artista responsável por essa música, é o mesmo responsável pelo álbum ao qual essa música pertence.
         \end{itemize}
     \end{itemize}.
     Além desta divisão de tipos, os itens também tem categorias e anexos, que são:
     \begin{itemize}
         \item Categoria: Nada mais que os gêneros de um item (ex: ação para filmes, pop para músicas...). Gêneros são pré-definidos e um item só pode ser cadatrado com gêneros que já existem. Além disso, itens só podem ter gêneros que fazem parte do seu tipo, por exemplo, um álbum não pode ter gênero ação.\\
-        Dado isso, um item pode ter quantos gêneros quiser, desde que não repita o mesmo, seja do seu tipo e esteja contido na tabela de gêneros (definida após o texto na tabela 2).
-        \item Anexos: Itens podem ter fotos e vídeos anexados para demonstrar seu conteúdo. Sendo necessário que para cada anexo adicionado, tenha caminho do arquivo (único), tipo de arquivo, nome e extensão.
+        Dado isso, um item pode ter quantos gêneros quiser, desde que não repita o mesmo, seja do seu tipo e esteja contido na tabela de gêneros, inicialmente definida pelos valores da tabela 2, porém podendo ser adicionadas novas categorias no futuro.
+        \item Anexos: Itens podem ter fotos e vídeos anexados para demonstrar seu conteúdo. Sendo necessário que para cada anexo adicionado, tenha caminho em disco de onde o arquivo foi armazenado (único), tipo de arquivo, nome e extensão.
     \end{itemize}
 \end{itemize}
 
@@ -172,14 +201,14 @@ Coreano \\[5pt]
 \newpage
 \section*{Modelo Conceitual}
 \begin{figure}[H]
-\includegraphics[angle=90, height=0.75\paperheight]{images/modeloConceitual.png}
+\includegraphics[angle=90, height=0.75\paperheight]{modeloConceitual.png}
 \end{figure}
 
 %% ===================================
 \newpage
 \section*{Dicionário de Dados}
-O dicionário de dados será itemizado abaixo, com cada tabela representando uma entidade (ou relacionamento com atributos) presente na modelagem. Nele já transferimos o modelo conceitual para lógico, com as tabelas geradas e os atributos colocados nas posições escolhidas pelos integrantes do grupo. \\
-Atributos em negrito definem que eles representam as chaves primárias das tabelas, sendo que se houver mais do que um atributo em negrito, esses atributos formam uma chave primária composta. Atributos únicos que não são definidos como chave primária (chaves candidatas) estão sublinhados. Atributos com um asterisco indicam que eles são opcionais. Todos os tipos descritos abaixos são referentes aos tipos que o PostgreSQL implementa em seu SGBD.
+O dicionário de dados será itemizado abaixo, com cada tabela representando uma entidade (ou relacionamento com atributos) presente na modelagem coneitual. \\
+Atributos em negrito definem que eles representam chaves candidatas das entidades.Atributos com um asterisco indicam que eles são opcionais. Todos os tipos descritos abaixos são referentes aos tipos que o PostgreSQL implementa em seu SGBD.
 
 \vspace{1cm}
 
@@ -196,7 +225,7 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{1}{l|}{name} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Nome do item, com no máximo\\ 50 caracteres\end{tabular}} & Super SGBD \\[15pt]
 \multicolumn{1}{l|}{release\_date} & \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{Data de lançamento do item} & 31/12/2018 \\[10pt]
 \multicolumn{1}{l|}{about} & \multicolumn{1}{l|}{varchar(1000)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Descrição sobre o item, podendo conter\\ até no máximo 1000 caracteres\end{tabular}} & Lorem ipsum... \\[15pt]
-\multicolumn{1}{l|}{is\_promotion} & \multicolumn{1}{l|}{boolean} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Informa se o item está ou não em promoção.\\ Se campor for true, o item é vendido pelo\\ valor descrito em promotion\_price, caso\\ contrário, é vendido pelo valor descrito em\\ price.\end{tabular}} & false \\[35pt]
+\multicolumn{1}{l|}{promotion\_date*} & \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Informa se o item está ou não em promoção.\\ Se campo for diferente de null,\\e possuir uma data nele, sabemos que o item\\ estará em promoção ATÉ aquela data. \\Se a data atual for maior do que a\\ descrita no campo, ou ele for NULL,\\ então o produto NÃO está em promoção.\end{tabular}} & 19/07/2019 \\[50pt]
 \multicolumn{1}{l|}{promotion\_price*} & \multicolumn{1}{l|}{numeric(5,2)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Valor a ser cobrado por um item, em reais,\\ caso o atributo is\_promotion seja true,\\ sendo o valor limitado em R\$ 999,99.\\ Caso esse campo esteja nulo, enquanto\\ is\_promotion esteja em true,\\ entendemos que o produto está de graça.\end{tabular}} &  \\[40pt]
 \multicolumn{1}{l|}{type} & \multicolumn{1}{l|}{char(5)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia qual tipo de Item esse Item realmente é. \\ É utilizado para sabermos em qual outra tabela da\\ especificação se encontram o resto dos\\ dados (já que a generalização/especificação\\ da tabela Item é total). Pode assumir os\\ valores \{ app, movie, book, album\}\end{tabular}} & app \\\bottomrule
 \end{tabular}%
@@ -213,10 +242,10 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
 \multicolumn{1}{l|}{\textbf{filepath}} & \multicolumn{1}{l|}{varchar(100)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Caminho para onde o anexo\\ está guardado localmente\end{tabular}} & ./downloads/attach\_001.jpg \\[15pt]
-\multicolumn{1}{l|}{app\_id} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo id da\\ tabela Item, para demonstrar a qual Item\\ esse Attachment pertence\end{tabular}} & 704ef290-... \\[20pt]
 \multicolumn{1}{l|}{type\_attachment} & \multicolumn{1}{l|}{char(6)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Tipo de anexo, sendo que os\\ possíveis valores são \{imagem, video\} \end{tabular}} & imagem \\[15pt]
 \multicolumn{1}{l|}{name} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Nome dado ao anexo, para ser\\ utilizado na hora de mostrarmos\\ o mesmo na UI. \end{tabular}} & Imagem 01 \\[20pt]
-\multicolumn{1}{l|}{extension} & \multicolumn{1}{l|}{char(5)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Extensão dada para o arquivo \end{tabular}} & jpg \\ \bottomrule
+\multicolumn{1}{l|}{extension} & \multicolumn{1}{l|}{char(5)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Extensão dada para o arquivo \end{tabular}} & jpg \\[5pt]
+\multicolumn{1}{l|}{app} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Item, \\representando o relacionamento Attaching.\\Cada um dos Attachments pertence a\\ somente um Item.\end{tabular}} & 704ef290-... \\\bottomrule
 \end{tabular}%
 }
 \caption{Tabela Attachment e a descrição textual de seus atributos}
@@ -248,10 +277,10 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Credit Card}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{card\_number}} & \multicolumn{1}{l|}{char(16)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Identificador do cartão de crédito\end{tabular}} & 1111 1111 1111 1111\\[15pt]
-\multicolumn{1}{l|}{user\_email} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo email da\\ tabela User, para demonstral qual User\\ é o responsável por esse cartão\end{tabular}} & example@example.com\\[20pt]
+\multicolumn{1}{l|}{\textbf{card\_number}} & \multicolumn{1}{l|}{char(16)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Identificador do cartão de crédito\end{tabular}} & 1111 1111 1111 1111\\[5pt]
 \multicolumn{1}{l|}{card\_name} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Nome do dono do cartão, que pode \\ser diferente do User relacionado a\\ esse Credit Card\end{tabular}} & John Doe\\[20pt]
-\multicolumn{1}{l|}{due\_date} & \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Data de vencimento do cartão\end{tabular}} & 31/12/2025\\ \bottomrule
+\multicolumn{1}{l|}{due\_date} & \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Data de vencimento do cartão\end{tabular}} & 31/12/2025\\[5pt]
+\multicolumn{1}{l|}{\textbf{user}} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela User,\\ representando o relacionamento\\ PaymentMethod. Cada CreditCard\\ pertence a apenas um usuário.\end{tabular}} & example@example.com\\\bottomrule
 \end{tabular}%
 }
 \caption{Tabela CreditCard e a descrição textual de seus atributos}
@@ -265,8 +294,8 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{WishList}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{user\_email}} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo email da tabela\\ User para demonstrar na WishList de qual\\ User o Item foi adicionado\end{tabular}} & example@example.com \\[20pt]
-\multicolumn{1}{l|}{\textbf{app\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo id da\\ tabela Item, para demonstrar qual Item\\ o User adicionou em sua WishList\end{tabular}} & 704ef290-... \\[20pt]
+\multicolumn{1}{l|}{\textbf{user}} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela User,\\ representando o relacionamento dele\\ com o Relacionamento WishList\\ (representado por essa tabela). Cada\\ entrada na WishList pertence a um\\ e somente um usuário.\end{tabular}} & example@example.com \\[40pt]
+\multicolumn{1}{l|}{\textbf{app}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Item,\\ representando o relacionamento dele\\ com o Relacionamento WishList\\ (representado por essa tabela). Cada\\ entrada na WishList pertence a um\\ e somente um item.\end{tabular}} & 704ef290-... \\[40pt]
 \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Data na qual o Item foi adicionado\\ à WishList do User\end{tabular}} & 12/01/2019 \\ \bottomrule
 \end{tabular}%
 }
@@ -281,9 +310,9 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Review}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{user\_email}} & \multicolumn{1}{l|}{varchar(50)} &
-\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo email da tabela\\ User para sabermos qual User realizou essa Review \end{tabular}} & example@example.com \\[15pt]
-\multicolumn{1}{l|}{\textbf{app\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo id da\\ tabela Item, para sabermos qual Item\\ foi avaliado\end{tabular}} & 704ef290-... \\[20pt]
+\multicolumn{1}{l|}{\textbf{user}} & \multicolumn{1}{l|}{varchar(50)} &
+\multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela User,\\ representando o relacionamento dele\\ com o Relacionamento Review\\ (representado por essa tabela). Cada\\ entrada em Review pertence a um\\ e somente um usuário. \end{tabular}} & example@example.com \\[40pt]
+\multicolumn{1}{l|}{\textbf{item}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Item,\\ representando o relacionamento dele\\ com o Relacionamento Review\\ (representado por essa tabela). Cada\\ entrada em Review pertence a um\\ e somente um item.\end{tabular}} & 704ef290-... \\[40pt]
 \multicolumn{1}{l|}{rating} & \multicolumn{1}{l|}{smallint} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Nota atribuída pelo User ao Item.\\ Seus valores possíveis são \{0, 1, 2, 3, 4, 5\}\end{tabular}} & 4 \\[15pt]
 \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Data que a review aconteceu\end{tabular}} & 22/02/2019 \\[10pt]
 \multicolumn{1}{l|}{comment*} & \multicolumn{1}{l|}{varchar(256)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Comentário opcional do User referente ao Item\end{tabular}} & Top \\ \bottomrule
@@ -300,9 +329,9 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Download}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{item\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo id da\\ tabela Item, para demonstrar à qual Item\\ esse download se refere\end{tabular}} & 704ef290-... \\[20pt]
-\multicolumn{1}{l|}{\textbf{user\_email}} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo email da\\ tabela User, para demonstrar qual User\\ realizou esse download\end{tabular}} & example@example.com \\[20pt]
-\multicolumn{1}{l|}{credit\_card\_number*} & \multicolumn{1}{l|}{char(16)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo card\_number da\\ tabela Credit Card, para demonstrar qual\\ Credit Card o User utilizou.\\ Esse campo só está preenchido se quando o\\ User realizou o download do Item,\\ ele possuía price ou promotion\_price\\ (caso em promoção) diferente de null ou 0.\end{tabular}} & 1111 1111 1111 1111 \\[50pt]
+\multicolumn{1}{l|}{\textbf{item}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Item,\\ representando o relacionamento dele\\ com a Entidade Associativa Download\\ (representado por essa tabela). Cada\\ entrada em download pertence a um\\ e somente um item.\end{tabular}} & 704ef290-... \\[40pt]
+\multicolumn{1}{l|}{\textbf{user}} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela User,\\ representando o relacionamento dele\\ com a Entidade Associativa Download\\ (representado por essa tabela). Cada\\ entrada em download pertence a um\\ e somente um user.\end{tabular}} & example@example.com \\[40pt]
+\multicolumn{1}{l|}{credit\_card*} & \multicolumn{1}{l|}{char(16)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela CreditCard,\\ representando o relacionamento Purchase,\\ representando qual CreditCard\\ o User utilizou para realizar esse download.\\ Esse campo só está preenchido se quando o\\ User realizou o download do Item,\\ ele possuía price ou promotion\_price\\ (caso em promoção) diferente de null ou 0.\end{tabular}} & 1111 1111 1111 1111 \\[50pt]
 \multicolumn{1}{l|}{first\_download\_date} & \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Data na qual o item foi baixado pela\\ primeira vez\end{tabular}} & 18/01/2019 \\[15pt]
 \multicolumn{1}{l|}{last\_download\_date} & \multicolumn{1}{l|}{date} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Data na qual o item foi baixado pela\\ última vez. É sempre maior ou igual a\\ first\_download\_date.\end{tabular}} & 18/01/2019 \\[20pt]
 \multicolumn{1}{l|}{downloaded} & \multicolumn{1}{l|}{boolean} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Informa se o item está instalado (true)\\ ou desinstalado (false) no momento\end{tabular}} & false \\ \bottomrule
@@ -346,44 +375,15 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}llll@{}}
 \toprule
-\multicolumn{4}{c}{\textbf{Artist}} \\ \midrule
+\multicolumn{4}{c}{\textbf{Person}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{name}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Representa o nome de um artista que pode possuir algum Album.\\ Nome pode possuir no máximo 80 caracteres\end{tabular}} & Artist Doe \\ \bottomrule
+\multicolumn{1}{l|}{\textbf{name}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Representa o nome de uma pessoa\\ que pode ter escrito algum Book,\\ participado de algum Movie\\ ou sido a criadora de algum Album.\\ Nome pode possuir no máximo 80 caracteres\end{tabular}} & Person Doe \\ \bottomrule
 \end{tabular}%
 }
 \caption{Tabela Artist e a descrição textual de seus atributos}
 \end{table}
 
-
-\begin{table}[]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}llll@{}}
-\toprule
-\multicolumn{4}{c}{\textbf{Author}} \\ \midrule
-\multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
-\multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{name}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Nome do autor, com no máximo\\ 80 caracteres\end{tabular}} & Author Doe \\ \bottomrule
-\end{tabular}%
-}
-\caption{Tabela Author e a descrição textual de seus atributos}
-\end{table}
-
-\begin{table}[]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}llll@{}}
-\toprule
-\multicolumn{4}{c}{\textbf{Cast}} \\ \midrule
-\multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
-\multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{name}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Nome da pessoa que pertence ao Cast\\ de algum filme\end{tabular}} & Cast Doe \\[15pt]
-\multicolumn{1}{l|}{function} & \multicolumn{1}{l|}{char(8)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Função que a pessoa desempenhou no filme.\\ É um dos valores entre \{actor, director, producer, writer\}\end{tabular}} & writer \\ \bottomrule
-\end{tabular}%
-}
-\caption{Tabela Cast e a descrição textual de seus atributos}
-\end{table}
 
 \begin{table}[]
 \centering
@@ -408,9 +408,9 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Categorization}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{category\_name}} & \multicolumn{1}{l|}{varchar(25)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo name da tabela\\ Category, associando essa Categoria a um Item\end{tabular}} & Ficção Científica \\[15pt]
-\multicolumn{1}{l|}{\textbf{category\_item\_type}} & \multicolumn{1}{l|}{char(5)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo item\_type da tabela\\ Category, informando a qual tipo de Item\\ essa categoria pode se relacionar.\\ O Item referenciado por essa Categorization\\ precisa ser do mesmo tipo que o descrito\\ nesse campo.\end{tabular}} & filme \\[35pt]
-\multicolumn{1}{l|}{\textbf{item\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo id da tabela\\ Item, fazendo com que uma Category\\ seja associada a um Item.\end{tabular}} & 704ef290-... \\ \bottomrule
+\multicolumn{1}{l|}{\textbf{category\_name}} & \multicolumn{1}{l|}{varchar(25)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Category,\\ representando o relacionamento dele\\ com o Relacionamento Categorization\\ (representado por essa tabela). Cada\\ entrada em Categorization pertence a um\\ e somente uma categoria,\\ que possui esse nome e o tipo descrito\\ no campo abaixo.\end{tabular}} & Ficção Científica \\[55pt]
+\multicolumn{1}{l|}{\textbf{category\_item\_type}} & \multicolumn{1}{l|}{char(5)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Category,\\ representando o relacionamento dele\\ com o Relacionamento Categorization\\ (representado por essa tabela). Cada\\ entrada em Categorization pertence a um\\ e somente uma categoria,\\ que possui o nome descrito acima e esse tipo.\\ O Item referenciado por essa Categorization\\ precisa ser do mesmo tipo que o descrito\\ nesse campo.\end{tabular}} & filme \\[65pt]
+\multicolumn{1}{l|}{\textbf{item}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Item,\\ representando o relacionamento dele\\ com o Relacionamento Categorization\\ (representado por essa tabela). Cada\\ entrada em Categorization pertence a um\\ e somente um Item.\end{tabular}} & 704ef290-... \\ \bottomrule
 \end{tabular}%
 }
 \caption{Tabela Categorization e a descrição textual de seus atributos}
@@ -424,9 +424,9 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{App \textit{(que especifica a tabela Item)}}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{app\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo id da\\ tabela Item, para encontramos os dados\\ adicionais referentes ao App\end{tabular}} & 704ef290-... \\[20pt]
-\multicolumn{1}{l|}{developer\_email} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo email da\\ tabela Developer, para sabermos quem\\ foi o(a) desenvolvedor(a) desse App\end{tabular}} & developer@example.com \\[20pt]
-\multicolumn{1}{l|}{size} & \multicolumn{1}{l|}{bigint} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Tamanho do aplicativo, em bytes\end{tabular}} & 1048576 \\[15pt]
+\multicolumn{1}{l|}{\textbf{item}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Item, representando o\\ relacionamento de especialização com Item.\\ Cada App pertence a apenas um item.\\ Esse relacionamento é utilizado para termos acesso\\ às outras informações de App.\end{tabular}} & 704ef290-... \\[45pt]
+\multicolumn{1}{l|}{developer} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Developer,\\ representando o relacionamento\\ Development. Cada App\\ possui apenas um developer.\end{tabular}} & developer@example.com \\[20pt]
+\multicolumn{1}{l|}{size} & \multicolumn{1}{l|}{bigint} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Tamanho do aplicativo, em bytes,\\ limitado a 1TB (1099511627800)\end{tabular}} & 1048576 \\[15pt]
 \multicolumn{1}{l|}{version} & \multicolumn{1}{l|}{varchar} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Texto demonstrando a versão do app no formato\\ "MAJOR.MINOR.PATCH", sendo que MAJOR, MINOR\\ e PATCH são números inteiros, sem vírgulas, e PATCH\\ pode ser omitido juntamente com o ponto anterior à ele \end{tabular}} & 2.1.12 \\ \bottomrule
 \end{tabular}%
 }
@@ -441,8 +441,8 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Album \textit{(que especifica a tabela Item)}}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{app\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo id da\\ tabela Item, para encontramos os dados\\ adicionais referentes ao Album\end{tabular}} & 704ef290-... \\[20pt]
-\multicolumn{1}{l|}{\textbf{artist\_name}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo name da\\ tabela Arist, para encontramos o\\ cantor/produtor desse album\end{tabular}} & Artist Doe \\ \bottomrule
+\multicolumn{1}{l|}{\textbf{item}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Item, representando o\\ relacionamento de especialização com Item.\\ Cada Album pertence a apenas um item.\\ Esse relacionamento é utilizado para termos acesso\\ às outras informações de Album.\end{tabular}} & 704ef290-... \\[20pt]
+\multicolumn{1}{l|}{\textbf{artist}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Person,\\ representando o relacionamento\\ Album\_Authorship. Cada Album\\ pertence a apenas um criador de álbum.\end{tabular}} & Artist Doe \\ \bottomrule
 \end{tabular}%
 }
 \caption{Tabela Album (que especifica a tabela Item) e a descrição textual de seus atributos}
@@ -456,7 +456,7 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Track}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{album\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo app\_id da\\ tabela Album, para sabermos de qual Album\\ essa música pertence\end{tabular}} & 704ef290-... \\[20pt]
+\multicolumn{1}{l|}{\textbf{item}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Album,\\ representando o relacionamento\\ Album\_Track. Cada Track\\ pertence a apenas um Album.\\ O artista que criou essa música pode\\ ser acessado através do álbum.\end{tabular}} & 704ef290-... \\[20pt]
 \multicolumn{1}{l|}{\textbf{name}} & \multicolumn{1}{l|}{varchar(50)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Nome da música, sendo única dentro de um álbum.\\ Possui no máximo 50 caracteres\end{tabular}} & Juntos e Shallow Now \\[15pt]
 \multicolumn{1}{l|}{duration} & \multicolumn{1}{l|}{int} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Duração da música em segundos\end{tabular}} & 205 \\\bottomrule
 \end{tabular}%
@@ -472,10 +472,10 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Book \textit{(que especifica a tabela Item)}}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{item\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo id da\\ tabela Item, para encontramos os dados\\ adicionais referentes ao Book\end{tabular}} & 704ef290-... \\[20pt]
-\multicolumn{1}{l|}{author\_name} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo name da\\ tabela Author, para sabermos quem\\ foi o(a) autor(a) desse Book\end{tabular}} & Author Doe \\[20pt]
-\multicolumn{1}{l|}{language\_name} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo name da\\ tabela Language, para sabermos em qual\\ linguagem o livro está escrito\end{tabular}} & Italiano \\[20pt]
-\multicolumn{1}{l|}{number\_of\_pages} & \multicolumn{1}{l|}{smallint} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Quantidade de páginas no livro\end{tabular}} & 425 \\[10pt]
+\multicolumn{1}{l|}{\textbf{item}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Item, representando o\\ relacionamento de especialização com Item.\\ Cada Book pertence a apenas um item.\\ Esse relacionamento é utilizado para termos acesso\\ às outras informações de Book.\end{tabular}} & 704ef290-... \\[30pt]
+\multicolumn{1}{l|}{author} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Person,\\ representando o relacionamento\\ Book\_Authorship. Cada Book\\ pertence a apenas um escritor.\end{tabular}} & Author Doe \\[25pt]
+\multicolumn{1}{l|}{language} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Language,\\ representando o relacionamento\\ Book\_Language. Cada Livro\\ possui apenas uma linguagem.\\ O mesmo livro, em diferentes linguages,\\ são representados como diferentes livros.\end{tabular}} & Italiano \\[40pt]
+\multicolumn{1}{l|}{number\_of\_pages} & \multicolumn{1}{l|}{smallint} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Quantidade de páginas no livro\end{tabular}} & 425 \\[5pt]
 \multicolumn{1}{l|}{\underline{ISBN}} & \multicolumn{1}{l|}{char(13)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}ISBN (código identificador) do livro\cite{ISBN}\end{tabular}} & 9788533302273 \\ \bottomrule
 \end{tabular}%
 }
@@ -491,7 +491,7 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Movie \textit{(que especifica a tabela Item)}}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{app\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo id da tabela Item,\\ para encontramos os dados adicionais referentes\\ ao Movie\end{tabular}} & 704ef290-... \\[20pt]
+\multicolumn{1}{l|}{\textbf{item}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Item, representando o\\ relacionamento de especialização com Item.\\ Cada Movie pertence a apenas um item.\\ Esse relacionamento é utilizado para termos acesso\\ às outras informações de Movie.\end{tabular}} & 704ef290-... \\[20pt]
 \multicolumn{1}{l|}{duration} & \multicolumn{1}{l|}{int} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Quantidade de minutos do filme\end{tabular}} & 123 \\ \bottomrule
 \end{tabular}%
 }
@@ -506,8 +506,8 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Movie\_Language}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{movie\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo app\_id da\\ tabela Movie, para sabermos qual filme\\ possui essa linguagem\end{tabular}} & 704ef290-... \\[20pt]
-\multicolumn{1}{l|}{\textbf{language\_name}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo name da\\ tabela Language, para sabermos qual\\ linguagem o filme indicado em movie\_id possui\end{tabular}} & Italiano \\[20pt]
+\multicolumn{1}{l|}{\textbf{movie}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Movie,\\ representando o relacionamento dele\\ com o Relacionamento Movie\_Language\\ (representado por essa tabela). Cada\\ entrada em Movie\_Language se refere a um\\ e somente um Movie.\\ Cada Movie pode ter várias linguages, desde\\ que não seja descrito duas vezes\\ a mesma linguagem com o mesmo tipo.\end{tabular}} & 704ef290-... \\[50pt]
+\multicolumn{1}{l|}{\textbf{language\_name}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Language,\\ representando o relacionamento dele\\ com o Relacionamento Movie\_Language\\ (representado por essa tabela). Cada\\ entrada em Movie\_Language se refere a um\\ e somente uma Linguagem.\end{tabular}} & Italiano \\[20pt]
 \multicolumn{1}{l|}{\textbf{type}} & \multicolumn{1}{l|}{char(7)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Representa se essa linguagem para esse filme\\ é relacionada à legenda ou ao áudio.\\ Os únicos valores permitidos são \{audio, legenda\}\end{tabular}} & legenda \\ \bottomrule
 \end{tabular}%
 }
@@ -522,8 +522,8 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \multicolumn{4}{c}{\textbf{Movie\_Cast}} \\ \midrule
 \multicolumn{1}{l|}{\textit{Atributo}} & \multicolumn{1}{l|}{\textit{Tipo}} &
 \multicolumn{1}{l|}{\textit{Descrição}} & \textit{Exemplo} \\ \midrule
-\multicolumn{1}{l|}{\textbf{movie\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo app\_id da\\ tabela Movie, para sabermos qual filme\\ possui essa pessoa no Cast\end{tabular}} & 704ef290-... \\[20pt]
-\multicolumn{1}{l|}{\textbf{cast\_name}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referencia o atributo name da\\ tabela Cast, para sabermos qual\\ pessoa do cast participou do filme indicado em movie\_id\end{tabular}} & Cast Doe \\ \bottomrule
+\multicolumn{1}{l|}{\textbf{movie\_id}} & \multicolumn{1}{l|}{uuid} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Movie,\\ representando o relacionamento dele\\ com o Relacionamento Movie\_Cast\ (representado por essa tabela). Cada\\ entrada em Movie\_Cast se refere a um\\ e somente um Movie.\end{tabular}} & 704ef290-... \\[20pt]
+\multicolumn{1}{l|}{\textbf{cast\_name}} & \multicolumn{1}{l|}{varchar(80)} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Referência à tabela Person,\\ representando o relacionamento dele\\ com o Relacionamento Movie\_Language\\ (representado por essa tabela). Cada\\ entrada em Movie\_Language se refere a um\\ e somente uma Person.\\ Essas pessoas podem participar de filmes,\\ ter escrito algum livro ou\\ produzido algum álbum;\end{tabular}} & Cast Doe \\ \bottomrule
 \end{tabular}%
 }
 \caption{Tabela Movie\_Cast e a descrição textual de seus atributos}
@@ -533,7 +533,7 @@ Atributos em negrito definem que eles representam as chaves primárias das tabel
 \clearpage
 \section*{Modelo Lógico}
 \begin{figure}[H]
-\includegraphics[angle=90, height=0.75\paperheight]{images/modeloRelacional.png}
+\includegraphics[angle=90, height=0.75\paperheight]{modeloRelacional.png}
 \end{figure}
 
 %% ===================================
@@ -558,40 +558,40 @@ Entidades:
         \item card\_number: Mapeamento direto para {\textbf{CreditCard.card\_number}}, obrigatório e chave primária.
         \item{\textit{user\_email}}: Identificador do usuário, por conta do mapeamento de relacionamento por colunas adicionais no relacionamento PaymentMethod. Mapeado para {\textbf{CreditCard.user\_email}}, obrigatório e chave estrangeira.
     \end{itemize}
-    \item Item: Como é uma generalização total e exclusiva, o mapeamento foi feito seguindo a alternativa 1 (segundo os slides de mapeamento). Onde foi usada como chave estrangeira (única) na entidade especializada a chave primária da entidade generalizada, fazendo com que sempre que ocorre uma entidade especializada, exista uma entidade generalizada que ainda não foi relacionada. Mapeada para {\textbf{Item}}.
+    \item Item: Como é uma generalização total e exclusiva, o mapeamento foi feito seguindo a Alternativa 1 dos slides de mapeamento(implementação por diferentes relações com uma relação para dados comuns). Foi usada como chave estrangeira (única) na entidade especializada a chave primária da entidade generalizada, fazendo com que sempre que ocorre uma entidade especializada, exista uma entidade generalizada que ainda não foi relacionada. Mapeada para {\textbf{Item}}.
     \begin{itemize}
-        \item {\textit{id}}: É um índice criado para ser a chave primária do item, pois como não existe nenhum atributo sozinho que é único, e ele tem que ser usado como chave estrangeira na entidade especializada, foi decidido que seria lógico usar um índice, por conta do menor espaço ocupado e facilidade. Mapeado para  {\textbf{Item.id}}, obrigatório e chave primária, sendo do tipo UUID, automaticamente gerado pelo banco de dados.
+        \item {\textit{id}}: Valor adicional criado para ser a chave primária do item, pois não existe nenhuma chave candidate que, sozinha, seja determinante para o Item. Como esse valor terá que que ser usado como chave estrangeira na entidade especializada, foi decidido que seria lógico usar uma cháve primária não-composta, por conta do menor espaço ocupado e facilidade. Mapeado para  {\textbf{Item.id}}, obrigatório e chave primária, sendo do tipo UUID, automaticamente gerado pelo banco de dados.
         \item name: Mapeamento direto para {\textbf{Item.name}}, obrigatório.
         \item price: Mapeamento direto para {\textbf{Item.price}}, opcional.
         \item release\_date: Mapeamento direto para {\textbf{Item.release\_date}}, obrigatório.
-        \item is\_promotion: Mapeamento direto para {\textbf{Item.is\_promotion}}, obrigatório.
+        \item promotion\_date: Mapeamento direto para {\textbf{Item.promotion\_date}}, opcional.
         \item promotion\_price: Mapeamento direto para {\textbf{Item.promotion\_price}}, opcional.
         \item about: Mapeamento direto para {\textbf{Item.about}}, obrigatório.
     \end{itemize}
-    \item App: Entidade especializada de item, onde contém como chave primária, uma chave estrangeira para item, fazendo com que seja obrigatória a existência do mesmo para sua criação. Mapeada para {\textbf{App}}.
+    \item App: Entidade especializada de item, onde sua chave primária é uma chave estrangeira para item, já que, como dito anteriormente, foi utilizada a Alternativa 1 dos slides de mapeamento de generalização. Mapeada para {\textbf{App}}.
     \begin{itemize}
-        \item {\textit{item\_id}}: É uma chave estrangeira para Item, ao mesmo tempo em que é chave primária, fazendo com que seja único o relacionamento com Item e não exista nenhum outro App relacionado com o mesmo. Mapeamento direto para {\textbf{App.item\_id}}, obrigatório e chave primária.
+        \item {\textit{item\_id}}: É uma chave estrangeira para Item, ao mesmo tempo em que é chave primária, fazendo com que seja único o relacionamento com Item e não exista nenhum outro App relacionado com o mesmo. Criado Mapeamento direto para {\textbf{App.item\_id}}, obrigatório e chave primária.
         \item {\textit{developer\_email}}: É uma chave estrangeira para Developer. Mapeado para {\textbf{App. developer\_email}}, obrigatório.
         \item size: Mapeamento direto para {\textbf{App.size}}, obrigatório.
         \item version: Mapeamento direto para {\textbf{App.version}}, obrigatório.
     \end{itemize}
-    \item Book: Entidade especializada de item, onde contém como chave primária, uma chave estrangeira para item, fazendo com que seja obrigatória a existência do mesmo para sua criação. Mapeada para {\textbf{Book}}.
+    \item Book: Entidade especializada de item, onde sua chave primária é uma chave estrangeira para item, já que, como dito anteriormente, foi utilizada a Alternativa 1 dos slides de mapeamento de generalização. Mapeada para {\textbf{Book}}.
     \begin{itemize}
         \item {\textit{item\_id}}: É uma chave estrangeira para Item, ao mesmo tempo em que é chave primária, fazendo com que seja único o relacionamento com Item e não exista nenhum outro App relacionado com o mesmo. Mapeamento direto para {\textbf{Book.item\_id}}, obrigatório e chave primária.
-        \item {\textit{author\_name}}: Chave estrangeira para a tabela Author. Mapeado para {\textbf{Book. author\_name}}, obrigatório.
-        \item {\textit{language\_name}}: Chave estrangeira para a tabela Language. Mapeado para {\textbf{Book. language\_name}}, obrigatório.
+        \item {\textit{author\_name}}: Chave estrangeira para a tabela Author. Criado por conta do mapeamento de relacionamento por colunas adicionais no relacionamento Book\_Authorship. Mapeado para {\textbf{Book. author\_name}}, obrigatório.
+        \item {\textit{language\_name}}: Chave estrangeira para a tabela Language. Criado por conta do mapeamento de relacionamento por colunas adicionais no relacionamento Book\_Language. Mapeado para {\textbf{Book. language\_name}}, obrigatório.
         \item isbn: Mapeamento direto para {\textbf{Book.isbn}}, obrigatório e único.
         \item number\_of\_pages: Mapeamento direto para {\textbf{Book.number\_of\_pages}}, obrigatório.
     \end{itemize}
-    \item Movie: Entidade especializada de item, onde contém como chave primária, uma chave estrangeira para item, fazendo com que seja obrigatória a existência do mesmo para sua criação. Mapeada para {\textbf{Movie}}.
+    \item Movie: Entidade especializada de item, onde sua chave primária é uma chave estrangeira para item, já que, como dito anteriormente, foi utilizada a Alternativa 1 dos slides de mapeamento de generalização. Mapeada para {\textbf{Movie}}.
     \begin{itemize}
         \item {\textit{item\_id}}: É uma chave estrangeira para Item, ao mesmo tempo em que é chave primária, fazendo com que seja único o relacionamento com Item e não exista nenhum outro App relacionado com o mesmo. Mapeamento direto para {\textbf{Movie.item\_id}}, obrigatório e chave primária.
         \item duraration: Mapeamento direto para {\textbf{Movie.duration}}, obrigatório.
     \end{itemize}
-    \item Album: Entidade especializada de item, onde contém como chave primária, uma chave estrangeira para item, fazendo com que seja obrigatória a existência do mesmo para sua criação. Mapeada para {\textbf{Album}}.
+    \item Album: Entidade especializada de item, onde sua chave primária é uma chave estrangeira para item, já que, como dito anteriormente, foi utilizada a Alternativa 1 dos slides de mapeamento de generalização. Mapeada para {\textbf{Album}}.
     \begin{itemize}
         \item {\textit{item\_id}}: É uma chave estrangeira para Item, ao mesmo tempo em que é chave primária, fazendo com que seja único o relacionamento com Item e não exista nenhum outro App relacionado com o mesmo. Mapeamento direto para {\textbf{Album.item\_id}}, obrigatório e chave primária.
-        \item {\textit{artist\_name}}: É uma chave estrangeira para Album. Mapeado para {\textbf{Album. artist\_name}}, obrigatório.
+        \item {\textit{artist\_name}}: É uma chave estrangeira para Album. Criado por conta do mapeamento de relacionamento por colunas adicionais no relacionamento Album\_Authorship. Mapeado para {\textbf{Album. artist\_name}}, obrigatório.
     \end{itemize}
     \item Developer: Mapeamento direto para {\textbf{Developer}}.
     \begin{itemize}
@@ -615,13 +615,13 @@ Entidades:
     \item Track: Mapeamento direto para {\textbf{Track}}.
     \begin{itemize}
         \item name: Mapeamento direto para {\textbf{Track.name}}, obrigatório e chave primária juntamente com \textbf{Track.album\_id}, já que \textbf{Track} é uma entidade fraca.
-        \item \textit{album\_id}: Mapeamento direto para {\textbf{Track.album\_id}}, obrigatório e chave primária juntamente com \textbf{Track.name}, já que \textbf{Track} é uma entidade fraca em relação a \textbf{Album}.
+        \item \textit{album\_id}: Mapeamento direto para {\textbf{Track.album\_id}}, obrigatório e chave primária juntamente com \textbf{Track.name}, já que \textbf{Track} é uma entidade fraca em relação a \textbf{Album}. Criado por conta do mapeamento de relacionamento por colunas adicionais no relacionamento Album\_Track.
         \item duration: Mapeamento direto para {\textbf{Track.duration}}, obrigatório e não nulo.
     \end{itemize}
     \item Attachment: Mapeamento direto para {\textbf{Attachment}}
     \begin{itemize}
         \item filepath: Mapeamento direto para \textbf{Attachment.filepath}, obrigatório e não nulo, é a chave primária da tabela por ser a única chave candidata.
-        \item \textit{item\_id}: Mapeamento direto para \textbf{Attachment.item\_id}, obrigatório e não nulo, é uma chave estrangeira para a tabela Item, representando o relacionamento Attaching.
+        \item \textit{item\_id}: Mapeamento direto para \textbf{Attachment.item\_id}, obrigatório e não nulo. Criado por conta do mapeamento de relacionamento por colunas adicionais no relacionamento Attaching. É uma chave estrangeira para a tabela Item.
         \item name: Mapeamento direto para \textbf{Attachment.name}, obrigatório e não nulo.
         \item type\_attachment: Mapeamento direto para \textbf{Attachment.type\_attachment}, obrigatório e não nulo.
         \item extension: Mapeamento direto para \textbf{Attachment.extension}, obrigatório e não nulo.
@@ -635,7 +635,7 @@ Entidades:
 \break
 Relacionamentos:
 \begin{itemize}
-    \item PaymentMethod: Mapeamento de relacionamento por colunas adicionais, pois é um relacionamento $1$:$N$. Com a chave estrangeira em CreditCard.
+    \item PaymentMethod: Mapeamento de relacionamento por colunas adicionais, pois é um relacionamento $1$:$N$. Com a chave estrangeira em CreditCard..
     \item Review: Mapeamento de relacionamento por tabela própria, pois é um relacionamento $N$:$M$.
     \begin{itemize}
         \item {\textit{user\_email}}: Chave primária do usuário, por ser uma tabela de relação que liga usuário a itens. Mapeado para {\textbf{Review.user\_email}}, obrigatório e chave estrangeira.
@@ -682,7 +682,74 @@ Relacionamentos:
     \item Album\_Track: Mapeamento de relacionamento por colunas adicionais, pois é um relacionamento $1$:$N$. Com a chave estrangeira em Track.
     \item Album\_Authorship: Mapeamento de relacionamento por colunas adicionais, pois é um relacionamento $1$:$N$. Com a chave estrangeira em Album.
     
-        
+    
+%% ===================================
+\clearpage
+\section*{Relatório do Programa}
+A linguagem de programação escolhida para desenvolver o programa foi Python\cite{Python}, juntamente com seu web framework Flask\cite{Flask}. Ele é também chamado de microframework  porque mantem um núcleo simples mas estendível. Não há uma camada de abstração do banco de dados, validação de formulários, ou qualquer outro componente onde bibliotecas de terceiros existem para prover a funcionalidade. Fazendo com que não se tornem obscuros os detalhes de conexão com a base de dados e satisfazendo um dos tópicos do enunciado.
+
+    \item Conexão com o banco de dados: Usando a biblioteca \textit{psycopg2}, foi feita a conexão com o banco de dados, segundo o código abaixo:
+
+    \begin{lstlisting}[language=Python]
+    def get_db():
+        if "db" not in g:
+            print("[INFO] Creating DB connection")
+            g.db = psycopg2.connect(database='GooglePlay', user="postgres", password="postgres")
+
+        return g.db
+    \end{lstlisting}
+    A partir da conexão é criado um cursor:
+    \begin{lstlisting}[language=Python]
+    def get_cursor():
+        if "cursor" not in g:
+            print("[INFO] Creting cursor")
+            g.cursor = get_db().cursor()
+
+    return g.cursor
+    \end{lstlisting}
+    Onde ambos são únicos para cada requisição e serão reusados se forem chamados novamente.
+    \item Preparação e envio das consultas ao banco de dados  e processamento de retorno das consultas: Todas as consultas no banco de dados são feitas conforme o código abaixo, onde é construída uma query SQL e feita uma chamada da função run\_query\_parameter(), que recebe como parametro uma query SQL e retorna um vetor de vetores.
+    O código trata das exceções que acontecem durante a conexão com o banco de dados, retornando a exceção bem formatada, que pode ser tratada pela parte da aplicação que fez a requisição de consulta.
+    \begin{lstlisting}[language=Python]
+    def promotion_film_members():
+        """
+        Retorna o nome e a funcao dos membros de filmes que estejam na promocao. 
+        """
+        try:
+            query = run_select_query('SELECT movie_cast.cast_name, "function" \
+                                      FROM movie_with_item item \
+                                      JOIN movie_cast ON (item.id = movie_cast.movie_id) \
+                                      WHERE promotion_date is not null and CURRENT_TIMESTAMP(0) <= promotion_date;')
+            return [{'name': obj[0], 'function': obj[1]} for obj in query]
+        except (Exception, psycopg2.Error) as error:
+            return {"status": "error", "error": error}
+    \end{lstlisting}
+    Cada vetor, dentro do vetor de vetores, representa uma linha de dados retornada da consulta feita.
+    Por exemplo: O retorno recebido no código anterior é:
+    [["name1", "function1"], ["name2", "function2"], ..., ["nameX", "functionX"]].
+    \item Detalhes da preparação, envio e processamento de retorno dos comandos de atualização: A inserção de novos elementos é feita segundo o código abaixo, onde é recebido como parametro os dados referente a tabela que deseja inserir e é chamado o cursor junto com a função execute(). Dentro da função execute, é passada como parametro a query SQL, junto com os dados recebidos pela função. 
+    \begin{lstlisting}[language=Python]
+    def add_categorization(item_uuid, category_name, category_type):
+        """
+        Tenta adicionar uma categorization de `category_name` do tipo `category_type`
+        no Item de uuid `item_uuid`
+        """
+        try:
+            record_to_insert = (item_uuid, category_name, category_type)
+            cursor = db.get_cursor()
+            cursor.execute('INSERT INTO categorization VALUES (%s, %s, %s);', record_to_insert)
+            db.get_db().commit()
+    
+            return {'row_count': cursor.rowcount, 'status': 'Record inserted successfuly into categorization table', 'error': ''}
+        except (Exception, psycopg2.Error) as error:
+            return {'row_count': 0, "status": "error", "error": error}
+    \end{lstlisting}
+    O código trata das exceções que acontecem durante a conexão com o banco de dados e a inserção da nova instância, retornando uma exceção, que pode ser tratada da mesma forma que mencionado no tópico anterior.
+    
+    
+    
+
+    
 \end{itemize}
 
 %% ========================
@@ -693,7 +760,9 @@ Relacionamentos:
 \bibitem{Google} Owned by Alphabet Inc., all rights reserved, 2015-2019. Available from World Wide Web (https://abc.xyz/)
 \bibitem{RFC5322} Defined in Email address (Wikipedia). Accesed in 31/05/2019. Available from World Wide Web (https://en.wikipedia.org/wiki/Email\_address)
 \bibitem{SHA512} SHA-2 criptography, as defined at Wikipedia. Acessed in 31/05/2019. Available from World Wide Web (https://en.wikipedia.org/wiki/SHA-2)
-\bibitem{ISBN} International Standard Book Number. Acessed in 31/05/2019. Available from World Wide Web (http://www.isbn.bn.br/website/) 
+\bibitem{ISBN} International Standard Book Number. Acessed in 31/05/2019. Available from World Wide Web (http://www.isbn.bn.br/website/)
+\bibitem{Python} https://www.python.org
+\bibitem{Flask} http://flask.pocoo.org/
 \end{thebibliography}
 
 \end{document}
