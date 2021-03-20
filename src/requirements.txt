@@ -30,7 +30,7 @@ idna-ssl==1.1.0
 incremental==17.5.0
 isort==4.3.4
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 json2html==1.2.1
 Keras-Applications==1.0.7
 Keras-Preprocessing==1.0.9
