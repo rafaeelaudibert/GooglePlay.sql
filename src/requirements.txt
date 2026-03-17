@@ -50,7 +50,7 @@ Pillow==8.3.2
 protobuf==3.7.0
 psycopg2==2.8.3
 pyaes==1.6.1
-pyasn1==0.4.5
+pyasn1==0.6.3
 pyasn1-modules==0.2.3
 pycodestyle==2.4.0
 pycparser==2.19
